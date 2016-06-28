@@ -1,0 +1,36 @@
+package ua.com.flangex.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ua.com.flangex.model.User;
+import ua.com.flangex.repository.UserRepository;
+
+import java.util.List;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public User save(User user) {
+        return null;
+    }
+
+    @Override
+    public void delete(int id) {
+        userRepository.delete(id);
+    }
+
+    @Override
+    public User get(int id) {
+        return userRepository.get(id);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.getAll();
+    }
+
+}

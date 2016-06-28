@@ -1,0 +1,45 @@
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+    <definition name="home" template="/WEB-INF/views/template/home.jsp">
+        <put-attribute name="title" value="Main page" />
+        <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+        <put-attribute name="home_banner" value="/WEB-INF/views/tiles/home-banner.jsp" />
+        <put-attribute name="home_benefits" value="/WEB-INF/views/tiles/home-benefits.jsp" />
+        <put-attribute name="home_about" value="/WEB-INF/views/tiles/home-about.jsp" />
+        <put-attribute name="register-form" value="/WEB-INF/views/tiles/register-form.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+    </definition>
+
+    <definition name="search" extends="home" template="/WEB-INF/views/template/search.jsp">
+        <put-attribute name="title" value="Search page" />
+    </definition>
+
+    <definition name="register" template="/WEB-INF/views/template/register.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+        <put-attribute name="register_form" value="/WEB-INF/views/tiles/register-form.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+    </definition>
+
+    <definition name="successful-registration" template="/WEB-INF/views/template/success-reg.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+    </definition>
+
+    <definition name="personal-profile" template="/WEB-INF/views/template/personal-profile.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+    </definition>
+
+    <definition name="user-profile" template="/WEB-INF/views/template/user-profile.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+    </definition>
+
+    <definition name="access-denied" template="/WEB-INF/views/template/access-denied.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+    </definition>
+</tiles-definitions>
