@@ -102,6 +102,19 @@ public class User extends BaseEntity {
         this.practicingLanguages = practicingLanguages;
     }
 
+    public User(String firstname, String lastname, Integer age, String email, String password, String confirmedPassword, String gender, String country, String city, Role role) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.email = email;
+        this.password = password;
+        this.confirmedPassword = confirmedPassword;
+        this.gender = gender;
+        this.country = country;
+        this.city = city;
+        this.role = role;
+    }
+
     public String getFirstname() {
         return firstname;
     }

@@ -1,5 +1,7 @@
 package ua.com.flangex.repository;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ua.com.flangex.model.User;
@@ -10,6 +12,8 @@ import java.util.List;
 @Transactional
 @Repository
 public class UserRepositoryImpl implements UserRepository {
+
+    final static Logger logger = LogManager.getLogger(UserRepositoryImpl.class);
 
     @PersistenceContext
     private EntityManager em;
@@ -39,6 +43,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> getAll() {
+        logger.debug("Get all users");
         return em.createNamedQuery(User.ALL_SORTED, User.class).getResultList();
     }
 
@@ -50,6 +55,5 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User getByUsername(String email) {
         return em.createNamedQuery(User.BY_USERNAME, User.class).setParameter(1, email).getSingleResult();
-
     }
 }
