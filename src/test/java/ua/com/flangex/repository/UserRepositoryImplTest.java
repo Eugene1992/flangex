@@ -11,8 +11,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+import ua.com.flangex.model.NativeLanguage;
+import ua.com.flangex.model.PracticingLanguage;
 import ua.com.flangex.model.Role;
 import ua.com.flangex.model.User;
+
+import java.util.Arrays;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -27,20 +31,28 @@ public class UserRepositoryImplTest {
 
     private User user;
 
+
     @Before
     public void runOnce() {
-        user = new User("Eugene", "Deyneka", 21, "deyneko55@gmail.com", "26121992z", "26121992z", "Male", "Ukraine", "Kiev", Role.ROLE_ADMIN);
+        user = new User(
+                "Eugene",
+                "Deyneka",
+                Arrays.asList(),
+                Arrays.asList()
+        );
     }
 
     @Test
     public void saveTest() {
-        userRepository.save(user);
-        //.assertNotNull();
+        User savedUser = userRepository.save(user);
+        Assert.assertEquals(user, savedUser);
     }
 
     @Test
     public void getTest(){
-
+        userRepository.save(user);
+        User result = userRepository.get(1);
+        Assert.assertEquals(user, result);
     }
 
 

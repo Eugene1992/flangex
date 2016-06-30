@@ -54,12 +54,12 @@ public class User extends BaseEntity {
     private String city;
 
     @NotNull(message = "At least one native language required")
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<NativeLanguage> nativeLanguages;
 
     @NotEmpty(message = "At least one practicing language required")
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<PracticingLanguage> practicingLanguages;
 
@@ -92,17 +92,7 @@ public class User extends BaseEntity {
     public User() {
     }
 
-    public User(String firstname, Integer age, String gender, String country, String city, List<NativeLanguage> nativeLanguages, List<PracticingLanguage> practicingLanguages) {
-        this.firstname = firstname;
-        this.age = age;
-        this.gender = gender;
-        this.country = country;
-        this.nativeLanguages = nativeLanguages;
-        this.city = city;
-        this.practicingLanguages = practicingLanguages;
-    }
-
-    public User(String firstname, String lastname, Integer age, String email, String password, String confirmedPassword, String gender, String country, String city, Role role) {
+    public User(String firstname, String lastname, Integer age, String email, String password, String confirmedPassword, String gender, String country, String city, List<NativeLanguage> nativeLanguages, List<PracticingLanguage> practicingLanguages, String description, Role role) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.age = age;
@@ -112,7 +102,17 @@ public class User extends BaseEntity {
         this.gender = gender;
         this.country = country;
         this.city = city;
+        this.nativeLanguages = nativeLanguages;
+        this.practicingLanguages = practicingLanguages;
+        this.description = description;
         this.role = role;
+    }
+
+    public User(String firstname, String lastname, List<NativeLanguage> nativeLanguages, List<PracticingLanguage> practicingLanguages) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.nativeLanguages = nativeLanguages;
+        this.practicingLanguages = practicingLanguages;
     }
 
     public String getFirstname() {

@@ -76,7 +76,30 @@
                                             <%--<a href="#" class="btn btn-primary">My Sales Performance</a>--%>
                                             <%--<a href="#" class="btn btn-primary">Team Sales Performance</a>--%>
 
-
+                                            <%--<div class="social">
+                                                                    <ul>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-google-plus"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-github"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-pinterest"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-linkedin"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-flickr"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-instagram"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-vimeo-square"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-stack-overflow"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-dropbox"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-tumblr"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-dribbble"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-skype"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-stack-exchange"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-youtube"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-xing"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-rss"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-foursquare"></i></a></li>
+                                                                        <li><a href="#"><i class="fa fa-lg fa-youtube-play"></i></a></li>
+                                                                    </ul>
+                                                                </div>--%>
                                         </div>
                                     </div>
                                 </div>

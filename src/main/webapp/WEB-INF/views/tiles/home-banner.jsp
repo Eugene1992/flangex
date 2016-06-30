@@ -8,7 +8,7 @@
                     <span class="name">Free Language Exchange</span>
                     <span class="skills">Choose your languages - Find speakers - Improve your language skills</span>
                     <hr>
-                    <p><a href="#" class="btn btn-lg btn-primary" onclick="tryToLogin()">Find friends</a></p>
+                    <p><a href="/search" class="btn btn-lg btn-primary">Find friends</a></p>
                 </div>
             </div>
         </div>
