@@ -749,6 +749,11 @@ div.dataTables_wrapper div.dataTables_filter input {
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
+.search-result {
+    padding-top: 20px;
+    margin-top: 58px;
+}
+
 .social {
     margin: 0;
     padding: 0;
