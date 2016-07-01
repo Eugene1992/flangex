@@ -1,12 +1,13 @@
 package ua.com.flangex.repository;
 
+import org.hibernate.Criteria;
 import ua.com.flangex.model.User;
 
 import java.util.List;
 
 public interface UserRepository {
 
-    User save(User user);
+    void save(User user);
 
     boolean delete(int id);
 
@@ -17,4 +18,6 @@ public interface UserRepository {
     User getByCredentials(String email, String password);
 
     User getByUsername(String email);
+
+    List<User> getAllByCriteria(String string);
 }

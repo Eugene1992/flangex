@@ -1,32 +1,30 @@
 package ua.com.flangex.web;
 
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import ua.com.flangex.model.Role;
 import ua.com.flangex.model.User;
 import ua.com.flangex.repository.UserRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Predicate;
-import java.util.Arrays;
-
 @Controller
+@Transactional
 public class SearchController {
 
     @Autowired
     private UserRepository userRepository;
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    /*@PersistenceContext
+    private EntityManager entityManager;*/
+
+    @Autowired
+    SessionFactory sessionFactory;
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(){
@@ -51,11 +49,16 @@ public class SearchController {
            @RequestParam(value = "google-plus-check", required = false) String googlePlusCheck,
            @RequestParam(value = "vkontakte-check", required = false) String vkontakteCheck) {
 
-        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<User> criteria = builder.createQuery(User.class);
-        criteria.where();
 
-        model.addAttribute("usersList", Arrays.asList(new User("Eugene", "Deyneka", 23, "deyneko55@gmail.com", "2612", "2612", "Male", "Ukraine", "Kiev", null, null, "blablabla", Role.ROLE_USER)));
+
+        if(firstname != null){
+
+        }
+
+        //Arrays.asList(new User("Eugene", "Deyneka", 23, "deyneko55@gmail.com", "2612", "2612", "Male", "Ukraine", "Kiev", null, null, "blablabla", Role.ROLE_USER)
+
+
+        model.addAttribute("usersList", userRepository.getAllByCriteria(firstname));
         return "search";
     }
 }

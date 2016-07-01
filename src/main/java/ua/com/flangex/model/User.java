@@ -1,5 +1,7 @@
 package ua.com.flangex.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
@@ -56,11 +58,13 @@ public class User extends BaseEntity {
     @NotNull(message = "At least one native language required")
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<NativeLanguage> nativeLanguages;
 
     @NotEmpty(message = "At least one practicing language required")
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
+    @Fetch(value = FetchMode.SUBSELECT) // org.hibernate.loader.MultipleBagFetchException: cannot simultaneously fetch multiple bags criteria
     private List<PracticingLanguage> practicingLanguages;
 
     private String description;
