@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title><tiles:insertAttribute name="title" /></title>
+        <title>Free Language Exchange</title>
         <title>Free Language Exchange</title>
         <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
         <link rel="stylesheet" href="../../../resources/css/bootstrap.min.css">
@@ -13,13 +13,19 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <%-- Glyphicons --%>
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </head>
     <body>
         <tiles:insertAttribute name="header" />
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 search-form" style="<%--background-color: #0f7864;--%>">
-                    <form action="/search" method="POST">
+                    <form action="/searching" method="GET">
                         <div class="form-group col-lg-6 controls">
                             <label for="firstname">First name</label>
                             <input type="text" name="firstname" class="form-control input-sm" id="firstname">
@@ -116,43 +122,95 @@
                     </form>
                 </div>
                 <div class="col-lg-8 search-result" style="/*background-color: #1c699d;*/ height: 800px">
-                    <table class="table table-striped">
+                    <table class="table table-striped" id="users-table">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
-                                <th>Age</th>
-                                <th>Gender</th>
-                                <th>Email</th>
-                                <th>Password</th>
-                                <th>Role</th>
-                                <th>Country</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                         <c:forEach items="${usersList}" var="user">
                             <tr>
-                                <td>${user.id}</td>
-                                <td>${user.firstname}</td>
-                                <td>${user.lastname}</td>
-                                <td>${user.age}</td>
-                                <td>${user.gender}</td>
-                                <td>${user.email}</td>
-                                <td>${user.password}</td>
-                                <td>${user.role}</td>
-                                <td>${user.country}</td>
+                                <td width="120px" class="text-center">
+                                    <img height="150px" style="float: left; margin: 0px 0px 10px 0px;" alt="User Pic" src="https://pp.vk.me/c622031/v622031947/547e7/KTtaUImch4E.jpg" class="img-rounded img-responsive">
+                                    <a href="#" class="btn btn-success btn-sm" style="text-align: center">Add friend</a>
+                                </td>
+                                <td>
+                                    <div>
+                                        <table class="table table-striped table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Name:</td>
+                                                    <td>${user.firstname} ${user.lastname}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Age:</td>
+                                                    <td>${user.age}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Gender:</td>
+                                                    <td>${user.gender}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email:</td>
+                                                    <td>${user.email}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Location:</td>
+                                                    <td>${user.country}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>About me:</td>
+                                                    <td>${user.description}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Native lang's:</td>
+                                                    <td>${user.nativeLanguages}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Practicing lang's:</td>
+                                                    <td>${user.practicingLanguages}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Socials:</td>
+                                                    <td>
+                                                        <div class="social">
+                                                            <a href="https://www.facebook.com/profile.php?id=100001797104519"><i class="fa fa-lg fa-facebook"></i></a>
+                                                            <a href="#"><i class="fa fa-lg fa-google-plus"></i></a>
+                                                            <a href="#"><i class="fa fa-lg fa-lg fa-vk"></i></a>
+                                                            <a href="#"><i class="fa fa-lg fa-twitter"></i></a>
+                                                            <a href="#"><i class="fa fa-lg fa-instagram"></i></a>
+                                                            <a href="#"><i class="fa fa-lg fa-linkedin"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
                             </tr>
-                        </tbody>
                         </c:forEach>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <tiles:insertAttribute name="footer" />
+        <%--<tiles:insertAttribute name="footer" />--%>
+
         <!-- JQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>--%>
         <!-- Bootstrap Core JavaScript -->
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#users-table').DataTable( {
+                    "pagingType": "full_numbers",
+                    "paging":   true,
+                    "ordering": false,
+                    "info":     true
+                } );
+            } );
+        </script>
     </body>
 </html>

@@ -1,5 +1,6 @@
 package ua.com.flangex.web;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -13,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ua.com.flangex.model.User;
 import ua.com.flangex.repository.UserRepository;
 
+import java.util.List;
+
 @Controller
-@Transactional
 public class SearchController {
 
     @Autowired
@@ -26,77 +28,33 @@ public class SearchController {
     @Autowired
     SessionFactory sessionFactory;
 
+    final static Logger logger = Logger.getLogger(SearchController.class);
+
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(){
+        logger.info("GET search page");
         return "search";
     }
 
-    @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String search(ModelMap model,
-           @RequestParam(value = "firstname", required = false) String firstname,
-           @RequestParam(value = "lastname", required = false) String lastname,
-           @RequestParam(value = "country", required = false) String country,
-           @RequestParam(value = "city", required = false) String city,
-           @RequestParam(value = "age-from", required = false) String ageFrom,
-           @RequestParam(value = "age-to", required = false) String ageTo,
-           @RequestParam(value = "gender", required = false) String gender,
-           @RequestParam(value = "native-language", required = false) String nativeLanguage,
-           @RequestParam(value = "practicing-language", required = false) String practicingLanguage,
-           @RequestParam(value = "facebook-check", required = false) String facebookCheck,
-           @RequestParam(value = "twitter-check", required = false) String twitterCheck,
-           @RequestParam(value = "instagram-check", required = false) String instagramCheck,
-           @RequestParam(value = "linkedin-check", required = false) String linkedinCheck,
-           @RequestParam(value = "google-plus-check", required = false) String googlePlusCheck,
-           @RequestParam(value = "vkontakte-check", required = false) String vkontakteCheck) {
-
-
-
-        if(firstname != null){
-
-        }
-
-        //Arrays.asList(new User("Eugene", "Deyneka", 23, "deyneko55@gmail.com", "2612", "2612", "Male", "Ukraine", "Kiev", null, null, "blablabla", Role.ROLE_USER)
-
+    @RequestMapping(value = "/searching", method = RequestMethod.GET)
+    public String searching(ModelMap model,
+           @RequestParam(value = "firstname", required = false)             String firstname,
+           @RequestParam(value = "lastname", required = false)              String lastname,
+           @RequestParam(value = "country", required = false)               String country,
+           @RequestParam(value = "city", required = false)                  String city,
+           @RequestParam(value = "age-from", required = false)              String ageFrom,
+           @RequestParam(value = "age-to", required = false)                String ageTo,
+           @RequestParam(value = "gender", required = false)                String gender,
+           @RequestParam(value = "native-language", required = false)       String nativeLanguage,
+           @RequestParam(value = "practicing-language", required = false)   String practicingLanguage,
+           @RequestParam(value = "facebook-check", required = false)        String facebookCheck,
+           @RequestParam(value = "twitter-check", required = false)         String twitterCheck,
+           @RequestParam(value = "instagram-check", required = false)       String instagramCheck,
+           @RequestParam(value = "linkedin-check", required = false)        String linkedinCheck,
+           @RequestParam(value = "google-plus-check", required = false)     String googlePlusCheck,
+           @RequestParam(value = "vkontakte-check", required = false)       String vkontakteCheck) {
 
         model.addAttribute("usersList", userRepository.getAllByCriteria(firstname));
         return "search";
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        System.out.println(firstname);
-//        System.out.println(lastname);
-//        System.out.println(country);
-//        System.out.println(city);
-//        System.out.println(ageFrom);
-//        System.out.println(ageTo);
-//        System.out.println(gender);
-//        System.out.println(nativeLanguage);
-//        System.out.println(practicingLanguage);
-//        System.out.println(facebookCheck);
-//        System.out.println(twitterCheck);
-//        System.out.println(instagramCheck);
-//        System.out.println(linkedinCheck);
-//        System.out.println(googlePlusCheck);
-//        System.out.println(vkontakteCheck);

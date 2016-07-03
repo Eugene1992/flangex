@@ -25,8 +25,6 @@ public class PracticingLanguage extends BaseEntity{
 
     @Override
     public String toString() {
-        return "PracticingLanguages{" +
-                name + '\'' +
-                '}';
+        return name;
     }
 }

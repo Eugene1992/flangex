@@ -803,80 +803,28 @@ div.dataTables_wrapper div.dataTables_filter input {
     background: #4060A5;
 }
 
-.social .fa-twitter:hover {
+.social .fa-vk {
+    background: #54769A;
+}
+
+.social .fa-twitter {
     background: #00ABE3;
 }
 
-.social .fa-google-plus:hover {
+.social .fa-google-plus {
     background: #e64522;
 }
 
-.social .fa-github:hover {
-    background: #343434;
-}
-
-.social .fa-pinterest:hover {
-    background: #cb2027;
-}
-
-.social .fa-linkedin:hover {
+.social .fa-linkedin {
     background: #0094BC;
 }
 
-.social .fa-flickr:hover {
-    background: #FF57AE;
-}
-
-.social .fa-instagram:hover {
+.social .fa-instagram {
     background: #375989;
 }
 
-.social .fa-vimeo-square:hover {
-    background: #83DAEB;
-}
-
-.social .fa-stack-overflow:hover {
-    background: #FEA501;
-}
-
-.social .fa-dropbox:hover {
-    background: #017FE5;
-}
-
-.social .fa-tumblr:hover {
-    background: #3a5876;
-}
-
-.social .fa-dribbble:hover {
-    background: #F46899;
-}
-
-.social .fa-skype:hover {
+.social .fa-skype {
     background: #00C6FF;
-}
-
-.social .fa-stack-exchange:hover {
-    background: #4D86C9;
-}
-
-.social .fa-youtube:hover {
-    background: #FF1F25;
-}
-
-.social .fa-xing:hover {
-    background: #005C5E;
-}
-
-.social .fa-rss:hover {
-    background: #e88845;
-}
-
-.social .fa-foursquare:hover {
-    background: #09B9E0;
-}
-
-.social .fa-youtube-play:hover {
-    background: #DF192A;
 }
 
 .social-search {

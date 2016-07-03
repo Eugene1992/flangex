@@ -31,7 +31,6 @@ public class UserRepositoryImplTest {
 
     private User user;
 
-
     @Before
     public void runOnce() {
         user = new User(
@@ -54,6 +53,4 @@ public class UserRepositoryImplTest {
         System.out.println(user);
         Assert.assertEquals(user, null);
     }
-
-
 }

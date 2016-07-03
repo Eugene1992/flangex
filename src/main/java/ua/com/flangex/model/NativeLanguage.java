@@ -17,9 +17,7 @@ public class NativeLanguage extends BaseEntity{
 
     @Override
     public String toString() {
-        return "NativeLanguages{" +
-                name + '\'' +
-                '}';
+        return name;
     }
 
     public String getName() {

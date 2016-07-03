@@ -63,12 +63,14 @@
                                                     <tr>
                                                         <td>Socials</td>
                                                         <td>
-                                                                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-google-plus"></i></a>
-                                                                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-vk"></i></a>
-                                                                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-twitter"></i></a>
-                                                                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-facebook"></i></a>
-                                                                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-instagram"></i></a>
-                                                                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-linkedin"></i></a>
+                                                            <div class="social">
+                                                                <a href="https://www.facebook.com/profile.php?id=100001797104519"><i class="fa fa-lg fa-facebook"></i></a>
+                                                                <a href="#"><i class="fa fa-lg fa-google-plus"></i></a>
+                                                                <a href="#"><i class="fa fa-lg fa-lg fa-vk"></i></a>
+                                                                <a href="#"><i class="fa fa-lg fa-twitter"></i></a>
+                                                                <a href="#"><i class="fa fa-lg fa-instagram"></i></a>
+                                                                <a href="#"><i class="fa fa-lg fa-linkedin"></i></a>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </tbody>

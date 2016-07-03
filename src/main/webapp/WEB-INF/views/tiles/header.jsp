@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="locale" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,21 +18,24 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="hidden">
+                <%--<li class="hidden">
                     <a href="#page-top"></a>
                 </li>
                 <li class="page-scroll">
                     <a href="#portfolio">Benefits</a>
-                </li>
+                </li>--%>
                 <li class="page-scroll">
+                    <a href="/search"><spring:message code="message.search"/></a>
+                </li>
+                <%--<li class="page-scroll">
                     <a href="#about">About</a>
-                </li>
+                </li>--%>
                 <li class="page-scroll">
-                    <a href="/register">Register</a>
+                    <a href="/register"><spring:message code="message.registration"/></a>
                 </li>
                 <sec:authorize access="isAnonymous()">
                 <li class="dropdown page-scroll">
-                    <a href="#" class="dropdown-toggle" id="login-dropdown-btn" data-toggle="dropdown" role="button" aria-expanded="false">Sign In</a>
+                    <a href="#" class="dropdown-toggle" id="login-dropdown-btn" data-toggle="dropdown" role="button" aria-expanded="false"><spring:message code="message.login"/></a>
                     <div class="dropdown-menu form-login stop-propagation" role="menu">
                         <form action="j_spring_security_check" method="POST">
                             <div class="form-group form-group-sm">
@@ -49,7 +54,7 @@
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                 <input id="login-username" type="text" class="form-control" name="username" placeholder="Username">
                             </div>--%>
-                            <button type="submit" class="btn btn-success btn-block btn-sm">Sign in</button>
+                            <button type="submit" class="btn btn-success btn-block btn-sm"><spring:message code="message.login"/></button>
                         </form>
                     </div>
                 </li>
@@ -68,10 +73,10 @@
                 </sec:authorize>
 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">ENG <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown">ENG <span class="caret"></span></a>
                     <ul class="dropdown-menu lang-change" id="dropdown-lang-switch" >
-                        <li><a href="#">RUS</a></li>
-                        <li><a href="#">UKR</a></li>
+                        <li><a href="?lang=ru">RUS</a></li>
+                        <li><a href="?lang=en">ENG</a></li>
                     </ul>
                 </li>
             </ul>
