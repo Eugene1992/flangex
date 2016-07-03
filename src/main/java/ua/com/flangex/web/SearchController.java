@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.com.flangex.model.User;
+import ua.com.flangex.model.UserSearchParameters;
 import ua.com.flangex.repository.UserRepository;
+import ua.com.flangex.service.UserService;
 
 import java.util.List;
 
@@ -20,7 +22,7 @@ import java.util.List;
 public class SearchController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     /*@PersistenceContext
     private EntityManager entityManager;*/
@@ -54,7 +56,27 @@ public class SearchController {
            @RequestParam(value = "google-plus-check", required = false)     String googlePlusCheck,
            @RequestParam(value = "vkontakte-check", required = false)       String vkontakteCheck) {
 
-        model.addAttribute("usersList", userRepository.getAllByCriteria(firstname));
+        UserSearchParameters usp = new UserSearchParameters(
+                firstname,
+                lastname,
+                country,
+                city,
+                Integer.parseInt(ageFrom),
+                Integer.parseInt(ageTo),
+                gender,
+                nativeLanguage,
+                practicingLanguage,
+                facebookCheck,
+                twitterCheck,
+                instagramCheck,
+                linkedinCheck,
+                googlePlusCheck,
+                vkontakteCheck
+        );
+
+        //userService.createSearchQuery(usp);
+
+        model.addAttribute("usersList", userService.createSearchQuery(usp));
         return "search";
     }
 }

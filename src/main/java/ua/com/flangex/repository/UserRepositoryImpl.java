@@ -73,10 +73,10 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     @Transactional
-    public List<User> getAllByCriteria(String string) {
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
-        criteria.add(Restrictions.eq("firstname", string));
-        List<User> users = criteria.list();
-        return users;
+    public List<User> getAllByQuery(Query query) {
+        List<User> findedUsers = query.list();
+        System.out.println(findedUsers);
+
+        return findedUsers;
     }
 }
