@@ -1,9 +1,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <section id="register">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>Register</h2>
+                <h2><spring:message code="message.register.form.title"/></h2>
                 <hr class="star-primary">
             </div>
         </div>
@@ -13,42 +14,49 @@
                     <div class="row control-group">
                         <%-- Firstname --%>
                         <div class="form-group col-xs-6 controls">
-                            <form:input type="text" class="form-control" placeholder="First name" path="firstname" value="Eugene"/>
+                            <spring:message code="message.register.form.firstaname" var="firstname"/>
+                            <form:input type="text" class="form-control" placeholder="${firstname}" path="firstname" value="Eugene"/>
                             <form:errors cssClass="label label-danger" path="firstname"/>
                         </div>
                         <%-- Last name --%>
                         <div class="form-group col-xs-6 controls">
-                            <form:input type="text" class="form-control" placeholder="Last name" path="lastname"/>
+                            <spring:message code="message.register.form.lastname" var="lastname"/>
+                            <form:input type="text" class="form-control" placeholder="${lastname}" path="lastname"/>
                             <form:errors cssClass="label label-danger" path="lastname"/>
                         </div>
                     </div>
                     <div class="row control-group">
                         <%-- Password --%>
                         <div class="form-group col-xs-6 controls">
-                            <form:input type="text" class="form-control" placeholder="Password" path="password" value="26121992z"/>
+                            <spring:message code="message.register.form.password" var="password"/>
+                            <form:input type="text" class="form-control" placeholder="${password}" path="password" value="26121992z"/>
                             <form:errors cssClass="label label-danger" path="password"/>
                         </div>
                         <%-- Re-Password --%>
                         <div class="form-group col-xs-6 controls">
-                            <form:input type="text" class="form-control" placeholder="Confirm Password" path="confirmedPassword" value="26121992z"/>
+                            <spring:message code="message.register.form.re-password" var="repassword"/>
+                            <form:input type="text" class="form-control" placeholder="${repassword}" path="confirmedPassword" value="26121992z"/>
                             <form:errors cssClass="label label-danger" path="confirmedPassword"/>
                         </div>
                     </div>
                     <div class="row control-group">
                         <%-- Email --%>
                         <div class="form-group col-xs-6 controls">
-                            <form:input type="text" class="form-control" placeholder="Email" path="email" value="deuneko55@gmail.com"/>
+                            <spring:message code="message.register.form.email" var="email"/>
+                            <form:input type="text" class="form-control" placeholder="${email}" path="email" value="deuneko55@gmail.com"/>
                             <form:errors cssClass="label label-danger" path="email"/>
                         </div>
                         <%-- Age --%>
                         <div class="form-group col-xs-3 controls">
-                            <form:input type="number" class="form-control" placeholder="Age" path="age" value="23"/>
+                            <spring:message code="message.register.form.age" var="age"/>
+                            <form:input type="number" class="form-control" placeholder="${age}" path="age" value="23"/>
                             <form:errors cssClass="label label-danger" path="age"/>
                         </div>
                         <%-- Gender --%>
                         <div class="form-group col-xs-3 floating-label-form-group controls">
+                            <spring:message code="message.register.form.gender" var="gender"/>
                             <form:select class="form-control"  path="gender">
-                                <form:option selected="true" disable="true" value="Gender"/>
+                                <form:option selected="true" disable="true" value="${gender}"/>
                                 <form:option value="Male" selected="true" />
                                 <form:option value="Female"/>
                             </form:select>
@@ -58,10 +66,11 @@
                     <div class="row control-group">
                         <%-- Country --%>
                         <div class="form-group col-xs-6 floating-label-form-group controls">
+                            <spring:message code="message.register.form.country" var="country"/>
                             <form:select class="form-control"  path="country">
                                 <%--<form:option value="-" label="Country" selected="true" disabled="true"/>--%>
                                 <%--<form:options items="${countryList}"/>--%>
-                                <option disabled selected>Country</option>
+                                <option disabled selected>${country}</option>
                                 <option value="Afganistan" selected>Afghanistan</option>
                                 <option value="Albania">Albania</option>
                                 <option value="Algeria">Algeria</option>
@@ -314,15 +323,17 @@
                         </div>
                         <%-- City --%>
                         <div class="form-group col-xs-6 controls">
-                            <form:input type="text" class="form-control" placeholder="City"  path="city"/>
+                            <spring:message code="message.register.form.city" var="city"/>
+                            <form:input type="text" class="form-control" placeholder="${city}"  path="city"/>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <%-- Native language(s) --%>
                         <div class="form-group col-xs-6 floating-label-form-group controls">
+                            <spring:message code="message.register.form.native-langs" var="nativeLangs"/>
                             <form:select class="form-control" size="6" path="nativeLanguages" multiple="true">
-                                <option disabled>Native language(s):</option>
+                                <option disabled>${nativeLangs}:</option>
                                 <option selected>Ukrainian</option>
                                 <option>Russian</option>
                                 <option>Belarusian</option>
@@ -332,8 +343,9 @@
                         </div>
                         <%-- Practicing language(s) --%>
                         <div class="form-group col-xs-6 floating-label-form-group controls">
+                            <spring:message code="message.register.form.practicing-langs" var="practLangs"/>
                             <form:select class="form-control" size="6" path="practicingLanguages" multiple="true">
-                                <option disabled>Practicing language(s):</option>
+                                <option disabled>${practLangs}:</option>
                                 <option selected>Ukrainian</option>
                                 <option>Russian</option>
                                 <option>Belarusian</option>
@@ -346,7 +358,8 @@
                     <div class="row control-group">
                         <%-- Description --%>
                         <div class="form-group col-xs-12 controls">
-                            <form:textarea rows="3" class="form-control" placeholder="Tell us about yourself" id="message" path="description"/>
+                            <spring:message code="message.register.form.tell-about" var="tellAbout"/>
+                            <form:textarea rows="3" class="form-control" placeholder="${tellAbout}" id="message" path="description"/>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -355,13 +368,15 @@
                         <%-- Facebook Link --%>
                         <div class="input-group col-xs-6 socials controls">
                             <span class="input-group-addon" id="facebook-addon"><i class="fa fa-facebook"></i></span>
-                            <form:input type="text" id="facebook-input" class="form-control" placeholder="Your Facebook" path="facebookLink" />
+                            <spring:message code="message.register.form.facebook-link" var="facebookLink"/>
+                            <form:input type="text" id="facebook-input" class="form-control" placeholder="${facebookLink}" path="facebookLink" />
                             <form:errors cssClass="label label-danger" path="facebookLink"/>
                         </div>
                         <%-- LinkedIn Link --%>
                         <div class="input-group col-xs-6 socials controls">
                             <span class="input-group-addon" id="linkedin-addon"><i class="fa fa-linkedin"></i></span>
-                            <form:input type="text" id="linkedin-input" class="form-control" placeholder="Your LinkedIn"  path="linkedInLink" />
+                            <spring:message code="message.register.form.linkedin-link" var="linkedinLink"/>
+                            <form:input type="text" id="linkedin-input" class="form-control" placeholder="${linkedinLink}"  path="linkedInLink" />
                         </div>
                     </div>
 
@@ -369,12 +384,14 @@
                         <%-- Google Plus Link --%>
                         <div class="input-group col-xs-6 socials controls">
                             <span class="input-group-addon" id="google-plus-addon"><i class="fa fa-google-plus"></i></span>
-                            <form:input type="text" id="google-plus-input" class="form-control" placeholder="Your Google Plus"  path="googlePlusLink" />
+                            <spring:message code="message.register.form.google-plus-link" var="googlePlusLink"/>
+                            <form:input type="text" id="google-plus-input" class="form-control" placeholder="${googlePlusLink}"  path="googlePlusLink" />
                         </div>
                         <%-- VKontakte Link --%>
                         <div class="input-group col-xs-6 socials controls">
                             <span class="input-group-addon" id="vk-addon"><i class="fa fa-vk"></i></span>
-                            <form:input type="text" id="vk-input" class="form-control" placeholder="Your VKontakte"  path="vkontakteLink" />
+                            <spring:message code="message.register.form.vk-link" var="vkLink"/>
+                            <form:input type="text" id="vk-input" class="form-control" placeholder="${vkLink}"  path="vkontakteLink" />
                         </div>
                     </div>
 
@@ -382,19 +399,21 @@
                         <%-- Twitter Link --%>
                         <div class="input-group col-xs-6 socials controls">
                             <span class="input-group-addon" id="twitter-addon"><i class="fa fa-twitter"></i></span>
-                            <form:input type="text" id="twitter-input" class="form-control" placeholder="Your Twitter"  path="twitterLink" />
+                            <spring:message code="message.register.form.twitter-link" var="twitterLink"/>
+                            <form:input type="text" id="twitter-input" class="form-control" placeholder="${twitterLink}"  path="twitterLink" />
                         </div>
                         <%-- Instagram Link --%>
                         <div class="input-group col-xs-6 socials controls">
                             <span class="input-group-addon" id="instagram-addon"><i class="fa fa-instagram" aria-hidden="true"></i></span>
-                            <form:input type="text" id="instagram-input" class="form-control" placeholder="Your Instagram"  path="instagramLink" />
+                            <spring:message code="message.register.form.instagram-link" var="instagramLink"/>
+                            <form:input type="text" id="instagram-input" class="form-control" placeholder="${instagramLink}"  path="instagramLink" />
                         </div>
                     </div>
                     <br>
                     <div id="success"></div>
                     <div class="row">
                         <div class="form-group col-xs-12">
-                            <button type="submit" class="btn btn-success btn-lg center-block">Register!</button>
+                            <button type="submit" class="btn btn-success btn-lg center-block"><spring:message code="message.register.form.btn"/></button>
                         </div>
                     </div>
                 </form:form>

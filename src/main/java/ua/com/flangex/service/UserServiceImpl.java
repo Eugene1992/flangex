@@ -91,6 +91,14 @@ public class UserServiceImpl implements UserService{
             query.setParameter("lastname", usp.getLastName());
         }
 
+        if (queryString.contains("ageFrom")){
+            query.setParameter("ageFrom", usp.getAgeFrom());
+        }
+
+        if (queryString.contains("ageTo")){
+            query.setParameter("ageTo", usp.getAgeTo());
+        }
+
         List<User> users = userRepository.getAllByQuery(query);
 
         return users;

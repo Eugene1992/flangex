@@ -7,7 +7,7 @@
                 <hr>
                 <div class="intro-text">
                     <span class="name">Free Language Exchange</span>
-                    <span class="skills">Choose your languages - Find speakers - Improve your language skills</span>
+                    <span class="skills"><spring:message code="message.main.slogan"/></span>
                     <hr>
                     <p><a href="/search" class="btn btn-lg btn-primary"><spring:message code="message.find.friends"/></a></p>
                 </div>

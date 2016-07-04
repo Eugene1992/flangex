@@ -1,13 +1,14 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <footer class="text-center">
     <div class="footer-above">
         <div class="container">
             <div class="row">
                 <div class="footer-col col-md-4">
-                    <h3>Location</h3>
+                    <h3><spring:message code="message.footer.contacts"/></h3>
                     <p>3481 Melrose Place<br>Beverly Hills, CA 90210</p>
                 </div>
                 <div class="footer-col col-md-4">
-                    <h3>Socials</h3>
+                    <h3><spring:message code="message.footer.socials"/></h3>
                     <ul class="list-inline">
                         <li>
                             <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>

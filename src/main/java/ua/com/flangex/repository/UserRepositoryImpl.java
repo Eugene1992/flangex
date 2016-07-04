@@ -76,7 +76,6 @@ public class UserRepositoryImpl implements UserRepository {
     public List<User> getAllByQuery(Query query) {
         List<User> findedUsers = query.list();
         System.out.println(findedUsers);
-
         return findedUsers;
     }
 }
