@@ -16,7 +16,7 @@
 
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
         <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </head>
@@ -176,12 +176,24 @@
                                                     <td>Socials:</td>
                                                     <td>
                                                         <div class="social">
-                                                            <a href="https://www.facebook.com/profile.php?id=100001797104519"><i class="fa fa-lg fa-facebook"></i></a>
-                                                            <a href="#"><i class="fa fa-lg fa-google-plus"></i></a>
-                                                            <a href="#"><i class="fa fa-lg fa-lg fa-vk"></i></a>
-                                                            <a href="#"><i class="fa fa-lg fa-twitter"></i></a>
-                                                            <a href="#"><i class="fa fa-lg fa-instagram"></i></a>
-                                                            <a href="#"><i class="fa fa-lg fa-linkedin"></i></a>
+                                                            <c:if test="${not empty user.facebookLink}">
+                                                                <a href="${user.facebookLink}"><i class="fa fa-lg fa-facebook"></i></a>
+                                                            </c:if>
+                                                            <c:if test="${not empty user.googlePlusLink}">
+                                                                <a href="${user.googlePlusLink}"><i class="fa fa-lg fa-google-plus"></i></a>
+                                                            </c:if>
+                                                            <c:if test="${not empty user.vkontakteLink}">
+                                                                <a href="${user.vkontakteLink}"><i class="fa fa-lg fa-lg fa-vk"></i></a>
+                                                            </c:if>
+                                                            <c:if test="${not empty user.twitterLink}">
+                                                                <a href="${user.twitterLink}"><i class="fa fa-lg fa-twitter"></i></a>
+                                                            </c:if>
+                                                            <c:if test="${not empty user.instagramLink}">
+                                                                <a href="${user.instagramLink}"><i class="fa fa-lg fa-instagram"></i></a>
+                                                            </c:if>
+                                                            <c:if test="${not empty user.linkedInLink}">
+                                                                <a href="${user.linkedInLink}"><i class="fa fa-lg fa-linkedin"></i></a>
+                                                            </c:if>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -201,14 +213,12 @@
         <!-- JQuery -->
         <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>--%>
         <!-- Bootstrap Core JavaScript -->
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function() {
                 $('#users-table').DataTable( {
                     "pagingType": "full_numbers",
                     "paging":   true,
-                    "ordering": false,
-                    "info":     true
+                    "ordering": false
                 } );
             } );
         </script>

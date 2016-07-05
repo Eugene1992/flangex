@@ -830,3 +830,11 @@ div.dataTables_wrapper div.dataTables_filter input {
 .social-search {
     margin-bottom: 0;
 }
+
+.pagination > li > a {
+    background-color: #2c3e50;
+}
+
+.pagination>.disabled>a:hover {
+    background-color: #0F7864;
+}

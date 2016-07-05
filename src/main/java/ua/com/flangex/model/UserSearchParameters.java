@@ -6,8 +6,8 @@ public class UserSearchParameters {
     private String lastName;
     private String country;
     private String city;
-    private int ageFrom;
-    private int ageTo;
+    private String ageFrom;
+    private String ageTo;
     private String gender;
     private String nativeLanguage;
     private String practicingLanguage;
@@ -18,7 +18,7 @@ public class UserSearchParameters {
     private String googlePlusCheck;
     private String vkontakteCheck;
 
-    public UserSearchParameters(String firstName, String lastName, String country, String city, int ageFrom, int ageTo, String gender, String nativeLanguage, String practicingLanguage, String facebookCheck, String twitterCheck, String instagramCheck, String linkedinCheck, String googlePlusCheck, String vkontakteCheck) {
+    public UserSearchParameters(String firstName, String lastName, String country, String city, String ageFrom, String ageTo, String gender, String nativeLanguage, String practicingLanguage, String facebookCheck, String twitterCheck, String instagramCheck, String linkedinCheck, String googlePlusCheck, String vkontakteCheck) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
@@ -52,11 +52,11 @@ public class UserSearchParameters {
         return city;
     }
 
-    public int getAgeFrom() {
+    public String getAgeFrom() {
         return ageFrom;
     }
 
-    public int getAgeTo() {
+    public String getAgeTo() {
         return ageTo;
     }
 

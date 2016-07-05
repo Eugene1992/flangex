@@ -2,16 +2,13 @@ package ua.com.flangex.util;
 
 import java.util.*;
 
-/**
- * Created by Евгений on 28.06.2016.
- */
 public class RandomUsersQueryGenerator {
     public static void main(String[] args) {
         generateUserSQLquery(50);
     }
 
-    static void generateUserSQLquery(int n){
-        for (int i = 0; i < n; i++) {
+    static void generateUserSQLquery(int numOfUsers){
+        for (int i = 0; i < numOfUsers; i++) {
             int genderRand = (int)(Math.random()*2); // вещественное число из [0;5)
             String gender;
             String name;
@@ -19,21 +16,27 @@ public class RandomUsersQueryGenerator {
             int age = getAge();
             String country = getCountry();
             String password = getPassword(8);
+            String facebookLink = isFacebookLink();
+            String twitterkLink = isTwitterLink();
+            String instagramkLink = isInstagramLink();
+            String vkLink = isVKontakteLink();
+            String googlePlusLink = isGooglePlusLink();
+            String linkedInLink = isLinkedInLink();
             if (genderRand == 0) {
                 gender = "Male";
-                name = getRandomMaleName();
+                name = getMaleName();
                 email = getEmail(name);
-                System.out.println(String.format("INSERT INTO user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description) VALUES ('%s', '', '%s', 'ROLE_USER', '%s', '%s', %d, '', '%s', '%s', 'London is a capital of Great Britain!');", name, email, password, password, age, country, gender));
+                System.out.println(String.format("INSERT INTO user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description, facebook_link, twitter_link, google_link, vkontakte_link, linkedIn_link, instagram_link) VALUES ('%s', '', '%s', 'ROLE_USER', '%s', '%s', %d, '', '%s', '%s', 'London is a capital of Great Britain!', '%s', '%s', '%s', '%s', '%s', '%s');", name, email, password, password, age, country, gender, facebookLink, twitterkLink, googlePlusLink, vkLink, linkedInLink, instagramkLink));
             } else {
                 gender = "Female";
-                name = getRandomFemaleName();
+                name = getFemaleName();
                 email = getEmail(name);
-                System.out.println(String.format("INSERT INTO user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description) VALUES ('%s', '', '%s', 'ROLE_USER', '%s', '%s', %d, '', '%s', '%s', 'London is a capital of Great Britain!');", name, email, password, password, age, country, gender));
+                System.out.println(String.format("INSERT INTO user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description, facebook_link, twitter_link, google_link, vkontakte_link, linkedIn_link, instagram_link) VALUES ('%s', '', '%s', 'ROLE_USER', '%s', '%s', %d, '', '%s', '%s', 'London is a capital of Great Britain!', '%s', '%s', '%s', '%s', '%s', '%s');", name, email, password, password, age, country, gender, facebookLink, twitterkLink, googlePlusLink, vkLink, linkedInLink, instagramkLink));
             }
         }
     }
 
-    static String getRandomMaleName(){
+    static String getMaleName(){
         List<String> names = Arrays.asList(
                 "Cecil", "Donnell", "Juan", "Don", "Columbus",
                 "Vince ", "Napoleon", "Shawn", "Benny", "Chi",
@@ -50,7 +53,7 @@ public class RandomUsersQueryGenerator {
         return names.get(n);
     }
 
-    static String getRandomFemaleName(){
+    static String getFemaleName(){
         List<String> names = Arrays.asList(
                 "Marin", "Marcelene", "Trista", "Consuelo", "Sherlene",
                 "Luann", "Ebonie", "Shanice", "Celestina", "Hester",
@@ -76,7 +79,8 @@ public class RandomUsersQueryGenerator {
     }
 
     static int getAge(){
-        return (int)(Math.random()*112+8); // вещественное число из [8;120)
+        int age = (int) (Math.random() * 112 + 8);
+        return age;
     }
 
     static String getCountry(){
@@ -139,5 +143,41 @@ public class RandomUsersQueryGenerator {
             }
         }
         return res;
+    }
+
+    static String isFacebookLink(){
+        int rand = (int)(Math.random()*2);
+        if (rand == 0) return "https://www.facebook.com/";
+        return "";
+    }
+
+    static String isTwitterLink(){
+        int rand = (int)(Math.random()*2);
+        if (rand == 0) return "https://www.twitter.com/";
+        return "";
+    }
+
+    static String isGooglePlusLink(){
+        int rand = (int)(Math.random()*2);
+        if (rand == 0) return "https://plus.google.com/";
+        return "";
+    }
+
+    static String isLinkedInLink(){
+        int rand = (int)(Math.random()*2);
+        if (rand == 0) return "https://plus.google.com/";
+        return "";
+    }
+
+    static String isVKontakteLink(){
+        int rand = (int)(Math.random()*2);
+        if (rand == 0) return "https://vk.com/";
+        return "";
+    }
+
+    static String isInstagramLink(){
+        int rand = (int)(Math.random()*2);
+        if (rand == 0) return "https://www.instagram.com/";
+        return "";
     }
 }

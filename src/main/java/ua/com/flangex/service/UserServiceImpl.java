@@ -47,40 +47,38 @@ public class UserServiceImpl implements UserService{
 
         if (!usp.getFirstName().isEmpty()){
             querySB.append("u.firstname = :firstname AND ");
-
         }
 
         if (!usp.getLastName().isEmpty()){
             querySB.append("u.lastname = :lastname AND ");
-            //query.setParameter("last_name", usp.getLastName());
         }
 
         if (!usp.getCountry().isEmpty()){
             querySB.append("u.country = :country AND ");
-            //query.setParameter("country", usp.getCountry());
         }
 
         if (!usp.getCity().isEmpty()){
             querySB.append("u.city = :city AND ");
-            //query.setParameter("city", usp.getCity());
         }
 
-        if (usp.getAgeFrom() != 0){
+        if (!usp.getAgeFrom().isEmpty()){
             querySB.append("u.age > :ageFrom AND ");
-            //query.setParameter("ageFrom", usp.getAgeFrom());
         }
 
-        if (usp.getAgeTo() != 0){
-            querySB.append("u.age < :ageTo");
-            //query.setParameter("ageTo", usp.getAgeTo());
+        if (!usp.getAgeTo().isEmpty()){
+            querySB.append("u.age < :ageTo AND ");
         }
 
-        if (!usp.getCity().isEmpty()){
-            querySB.append("u.city = :city");
-           //query.setParameter("city", usp.getCity());
+        if (!usp.getGender().isEmpty()){
+            querySB.append("u.gender = :gender AND ");
         }
 
         String queryString = querySB.toString();
+
+        if (queryString.endsWith("AND ")) {
+            queryString = queryString.substring(0, queryString.length() - 5);
+        }
+
         Query query  =  sessionFactory.getCurrentSession().createQuery(queryString);
 
         if (queryString.contains("firstname")){
@@ -91,13 +89,29 @@ public class UserServiceImpl implements UserService{
             query.setParameter("lastname", usp.getLastName());
         }
 
+        if (queryString.contains("country")){
+            query.setParameter("country", usp.getCountry());
+        }
+
+        if (queryString.contains("city")){
+            query.setParameter("city", usp.getCity());
+        }
+
         if (queryString.contains("ageFrom")){
-            query.setParameter("ageFrom", usp.getAgeFrom());
+            int ageFrom = Integer.parseInt(usp.getAgeFrom());
+            query.setParameter("ageFrom", ageFrom);
         }
 
         if (queryString.contains("ageTo")){
-            query.setParameter("ageTo", usp.getAgeTo());
+            int ageTo = Integer.parseInt(usp.getAgeTo());
+            query.setParameter("ageTo", ageTo);
         }
+
+        if (queryString.contains("gender")){
+            query.setParameter("gender", usp.getGender());
+        }
+
+        System.out.println(queryString);
 
         List<User> users = userRepository.getAllByQuery(query);
 
