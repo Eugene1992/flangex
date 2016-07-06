@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RandomUsersQueryGenerator {
     public static void main(String[] args) {
-        generateUserSQLquery(50);
+        generateUserSQLquery(100);
     }
 
     static void generateUserSQLquery(int numOfUsers){
@@ -26,12 +26,12 @@ public class RandomUsersQueryGenerator {
                 gender = "Male";
                 name = getMaleName();
                 email = getEmail(name);
-                System.out.println(String.format("INSERT INTO user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description, facebook_link, twitter_link, google_link, vkontakte_link, linkedIn_link, instagram_link) VALUES ('%s', '', '%s', 'ROLE_USER', '%s', '%s', %d, '', '%s', '%s', 'London is a capital of Great Britain!', '%s', '%s', '%s', '%s', '%s', '%s');", name, email, password, password, age, country, gender, facebookLink, twitterkLink, googlePlusLink, vkLink, linkedInLink, instagramkLink));
+                System.out.println(String.format("INSERT INTO user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description, facebook_link, twitter_link, google_link, vkontakte_link, linkedIn_link, instagram_link) VALUES (\"%s\", '', \"%s\", 'ROLE_USER', \"%s\", \"%s\", %d, '', \"%s\", \"%s\", 'London is a capital of Great Britain!', \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\");", name, email, password, password, age, country, gender, facebookLink, twitterkLink, googlePlusLink, vkLink, linkedInLink, instagramkLink));
             } else {
                 gender = "Female";
                 name = getFemaleName();
                 email = getEmail(name);
-                System.out.println(String.format("INSERT INTO user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description, facebook_link, twitter_link, google_link, vkontakte_link, linkedIn_link, instagram_link) VALUES ('%s', '', '%s', 'ROLE_USER', '%s', '%s', %d, '', '%s', '%s', 'London is a capital of Great Britain!', '%s', '%s', '%s', '%s', '%s', '%s');", name, email, password, password, age, country, gender, facebookLink, twitterkLink, googlePlusLink, vkLink, linkedInLink, instagramkLink));
+                System.out.println(String.format("INSERT INTO user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description, facebook_link, twitter_link, google_link, vkontakte_link, linkedIn_link, instagram_link) VALUES (\"%s\", '', \"%s\", 'ROLE_USER', \"%s\", \"%s\", %d, '', \"%s\", \"%s\", 'London is a capital of Great Britain!', \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\");", name, email, password, password, age, country, gender, facebookLink, twitterkLink, googlePlusLink, vkLink, linkedInLink, instagramkLink));
             }
         }
     }

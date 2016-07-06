@@ -73,13 +73,37 @@ public class UserServiceImpl implements UserService{
             querySB.append("u.gender = :gender AND ");
         }
 
+        if (!(usp.getFacebookCheck() == null)){
+            querySB.append("u.facebookLink != '' AND "); // cause populate users got empty values in socials fields
+        }
+
+        if (!(usp.getTwitterCheck() == null)){
+            querySB.append("u.twitterLink != '' AND ");
+        }
+
+        if (!(usp.getGooglePlusCheck() == null)){
+            querySB.append("u.googlePlusLink != '' AND ");
+        }
+
+        if (!(usp.getVkontakteCheck() == null)){
+            querySB.append("u.vkontakteLink != '' AND ");
+        }
+
+        if (!(usp.getLinkedinCheck() == null)){
+            querySB.append("u.linkedInLink != '' AND ");
+        }
+
+        if (!(usp.getInstagramCheck() == null)){
+            querySB.append("u.instagramLink != '' AND ");
+        }
+
         String queryString = querySB.toString();
 
         if (queryString.endsWith("AND ")) {
             queryString = queryString.substring(0, queryString.length() - 5);
         }
 
-        Query query  =  sessionFactory.getCurrentSession().createQuery(queryString);
+        Query query = sessionFactory.getCurrentSession().createQuery(queryString);
 
         if (queryString.contains("firstname")){
             query.setParameter("firstname", usp.getFirstName());
@@ -110,8 +134,6 @@ public class UserServiceImpl implements UserService{
         if (queryString.contains("gender")){
             query.setParameter("gender", usp.getGender());
         }
-
-        System.out.println(queryString);
 
         List<User> users = userRepository.getAllByQuery(query);
 
