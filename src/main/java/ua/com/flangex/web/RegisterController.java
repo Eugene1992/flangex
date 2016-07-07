@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ua.com.flangex.model.Country;
+import ua.com.flangex.model.Language;
 import ua.com.flangex.model.Role;
 import ua.com.flangex.model.User;
 import ua.com.flangex.model.validator.UserValidator;
@@ -52,7 +53,8 @@ public class RegisterController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(ModelMap modelMap) {
         logger.info("GET register page");
-        modelMap.addAttribute("countryList", Country.getCountryList());
+        modelMap.addAttribute("countryList", Country.getCountries());
+        modelMap.addAttribute("languageList", Language.getLanguages());
         return "register";
     }
 

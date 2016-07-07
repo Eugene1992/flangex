@@ -34,6 +34,25 @@ public class RandomUsersQueryGenerator {
                 System.out.println(String.format("INSERT INTO user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description, facebook_link, twitter_link, google_link, vkontakte_link, linkedIn_link, instagram_link) VALUES (\"%s\", '', \"%s\", 'ROLE_USER', \"%s\", \"%s\", %d, '', \"%s\", \"%s\", 'London is a capital of Great Britain!', \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\");", name, email, password, password, age, country, gender, facebookLink, twitterkLink, googlePlusLink, vkLink, linkedInLink, instagramkLink));
             }
         }
+        System.out.println("");
+
+        for (int i = 3, langId = 1; i < numOfUsers + 2; i++) {
+            List<String> userNativeLangs = getLanguages();
+            for (int j = 0; j < userNativeLangs.size(); j++, langId++) {
+                String query = String.format("INSERT INTO native_language (id, name, user_id) VALUES (\"%d\", \"%s\", \"%d\");", langId, userNativeLangs.get(j), i);
+                System.out.println(query);
+            }
+        }
+
+        System.out.println();
+
+        for (int i = 3, langId = 1; i < numOfUsers + 2; i++) {
+            List<String> userNativeLangs = getLanguages();
+            for (int j = 0; j < userNativeLangs.size(); j++, langId++) {
+                String query = String.format("INSERT INTO practicing_language (id, name, user_id) VALUES (\"%d\", \"%s\", \"%d\");", langId, userNativeLangs.get(j), i);
+                System.out.println(query);
+            }
+        }
     }
 
     static String getMaleName(){
@@ -180,4 +199,41 @@ public class RandomUsersQueryGenerator {
         if (rand == 0) return "https://www.instagram.com/";
         return "";
     }
+
+    static List<String> getLanguages(){
+        int langNum = (int)(Math.random()*5+2);
+        List<Integer> selected = new ArrayList<>();
+        List<String> result  = new ArrayList<>();
+        List<String> langs = Arrays.asList(
+                "Afrikans", "Ainu", "Albanian", "Arabic", "Armenian",
+                "Azerbaijanian", "Basque", "Bengali", "Bihari", "Bosnian",
+                "Breton", "Bulgarian", "Burmese", "Cantonese", "Catalan",
+                "Chinese Traditional", "Croatian", "Czech", "Danish", "Dutch",
+                "English", "Esperanto", "Estonian", "Faroese", "Finnish", "Flemish",
+                "Gaelic", "Georgian", "German", "Greek", "Haitian", "Hawaiian",
+                "Hebrew", "Hindi", "Hungarian", "Icelandic", "Indonesian", "Irish",
+                "Italian", "Japanese", "Javanese", "Kannada", "Khmer", "Kirghiz",
+                "Korean", "Kurdish", "Laotian", "Latin", "Latvian", "Lithuanian",
+                "Lojban", "Macedonian", "Malay", "Maltese", "Mandarin", "Marathi",
+                "Mongolian", "Myanmar", "Navajo", "Norwegian", "Ossetic", "Panjabi",
+                "Pashto", "Persian", "Polish", "Portuguese (Brazil)",
+                "Portuguese (Portugal)", "Romani", "Romanian", "Russian", "Sanskrit",
+                "Serbian", "Sinhalese", "Slavic", "Slovak", "Slovenian", "Spanish",
+                "Swahili", "Swedish", "Tagalog", "Tamil", "Telugu", "Thai", "Tibetan",
+                "Tongan", "Turkish", "Turkmen", "Udmurt", "Ukrainian", "Urdu", "Uyghur",
+                "Uzbek", "Vietnamese", "Welsh", "Yiddish", "Zulu"
+                );
+        int rand;
+        for (int i = 0; i < langNum; i++) {
+            rand = (int)(Math.random() * langs.size());
+            if (selected.contains(rand)) {
+                continue;
+            } else {
+                result.add(langs.get(rand));
+                selected.add(rand);
+            }
+        }
+        return result;
+    }
+
 }
