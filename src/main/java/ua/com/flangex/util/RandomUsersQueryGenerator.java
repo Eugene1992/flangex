@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RandomUsersQueryGenerator {
     public static void main(String[] args) {
-        generateUserSQLquery(100);
+        generateUserSQLquery(10);
     }
 
     static void generateUserSQLquery(int numOfUsers){

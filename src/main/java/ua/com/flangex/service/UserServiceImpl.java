@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService{
             querySB.append("u.age < :ageTo AND ");
         }
 
-        if (!usp.getGender().isEmpty()){
+        if (!usp.getGender().isEmpty() && !usp.getGender().equals("Both")){
             querySB.append("u.gender = :gender AND ");
         }
 

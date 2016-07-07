@@ -133,7 +133,7 @@
                         <c:forEach items="${usersList}" var="user">
                             <tr>
                                 <td width="120px" class="text-center">
-                                    <img height="150px" style="float: left; margin: 0px 0px 10px 0px;" alt="User Pic" src="https://pp.vk.me/c622031/v622031947/547e7/KTtaUImch4E.jpg" class="img-rounded img-responsive">
+                                    <img height="150px" style="float: left; margin: 0 0 10px 0;" alt="User Pic" src="http://edu.cbsystematics.com/Images/Trainers/All/%D0%94%D0%B0%D0%B9%D0%BD%D0%B5%D0%BA%D0%B0.jpg" class="img-rounded img-responsive">
                                     <a href="#" class="btn btn-success btn-sm" style="text-align: center">Add friend</a>
                                 </td>
                                 <td>
@@ -141,7 +141,7 @@
                                         <table class="table table-striped table-bordered">
                                             <tbody>
                                                 <tr>
-                                                    <td>Name:</td>
+                                                    <td width="190px">Name:</td>
                                                     <td>${user.firstname} ${user.lastname}</td>
                                                 </tr>
                                                 <tr>
@@ -166,11 +166,19 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Native lang's:</td>
-                                                    <td>${user.nativeLanguages}</td>
+                                                    <td>
+                                                        <c:forEach items="${user.nativeLanguages}" var="lang" varStatus="status">
+                                                            <c:out value="${lang}"/><c:if test="${!status.last}">,</c:if>
+                                                        </c:forEach>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Practicing lang's:</td>
-                                                    <td>${user.practicingLanguages}</td>
+                                                    <td>
+                                                        <c:forEach items="${user.practicingLanguages}" var="lang" varStatus="status">
+                                                            <c:out value="${lang}"/><c:if test="${!status.last}">,</c:if>
+                                                        </c:forEach>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Socials:</td>
