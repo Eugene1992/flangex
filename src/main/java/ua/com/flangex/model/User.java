@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -26,45 +27,49 @@ public class User extends BaseEntity {
     public static final String BY_USERNAME = "User.getByUsername";
     public static final String ALL_SORTED = "User.getAllSorted";
 
-    @NotEmpty(message = "First name is required")
+    @NotEmpty(message = "{validation.required.firstname}")
+    @Size(max = 10, message = "{validation.length.firstname}")
     @Column(name = "first_name")
     private String firstname;
 
     @Column(name = "last_name")
     private String lastname;
 
-    @NotNull(message = "Age is required")
-    @Min(value = 8, message = "Need to be between 8 and 120")
-    @Max(value = 120, message = "Need to be between 8 and 120")
+    @NotNull(message = "{validation.required.age}")
+    @Min(value = 8, message = "{validation.size.age.required}")
+    @Max(value = 120, message = "{validation.size.age.required}")
     private Integer age;
 
-    @NotEmpty(message = "Email is required")
-    @Email(message = "Not a well-formed email address")
+    @NotEmpty(message = "{validation.required.email}")
+    @Email(message = "validation.wrong-formed.email")
     private String email;
 
+    @Size(min = 6, max = 20, message = "{validation.length.password}")
+    @NotEmpty(message = "{validation.required.password}")
     private String password;
 
+    @NotEmpty(message = "{validation.required.confirmed-password}")
     @Column(name = "confirmed_password")
     private String confirmedPassword;
 
-    @NotEmpty(message = "Gender is required")
+    @NotEmpty(message = "{validation.required.gender}")
     private String gender;
 
-    @NotEmpty(message = "Country is required")
+    @NotEmpty(message = "{validation.required.country}")
     private String country;
 
     private String city;
 
-    @NotNull(message = "At least one native language required")
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @NotEmpty(message = "{validation.required.native-language}")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     @Fetch(value = FetchMode.SUBSELECT)
     private List<NativeLanguage> nativeLanguages;
 
-    @NotEmpty(message = "At least one practicing language required")
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @NotEmpty(message = "{validation.required.practicing-language}")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    @Fetch(value = FetchMode.SUBSELECT) // org.hibernate.loader.MultipleBagFetchException: cannot simultaneously fetch multiple bags criteria
+    @Fetch(value = FetchMode.SUBSELECT) // SUBSELECT org.hibernate.loader.MultipleBagFetchException: cannot simultaneously fetch multiple bags criteria
     private List<PracticingLanguage> practicingLanguages;
 
     private String description;

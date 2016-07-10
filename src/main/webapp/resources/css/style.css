@@ -317,7 +317,6 @@ section.success a.active {
 
 .floating-label-form-group:not(:first-child) {
     padding-left: 14px;
-    border-left: 1px solid #eee;
 }
 
 .floating-label-form-group-with-value label {
@@ -608,6 +607,10 @@ footer .footer-below {
     background-color: #2C3E50;
 }
 
+.pagination>.disabled>a:focus {
+    background-color: #2C3E50;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -728,7 +731,6 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 #personal-cab-panel ul li {
     color: #fff;
-    border: 1px solid white;
     margin: 0 5px;
     border-radius: 5px;
 }
@@ -845,4 +847,24 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 .fa-fw {
     margin-top: 13px;
+}
+
+.reg-form-row {
+    height: 70px;
+}
+
+#tell-us-area {
+    margin: 20px 0 10px 0;
+}
+
+#reg-btn {
+    margin-top: 20px;
+}
+
+.langs-first-option{
+    margin-bottom: 7px;
+}
+
+#login-form {
+    margin-bottom: 5px;
 }

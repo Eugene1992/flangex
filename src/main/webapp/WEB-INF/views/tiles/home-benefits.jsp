@@ -9,38 +9,17 @@
         </div>
         <div class="row">
             <div class="col-sm-4 portfolio-item">
-                <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img src="../../../resources/img/free.png" class="img-responsive center-block" alt="">
-                </a>
+                <img src="../../../resources/img/free.png" class="img-responsive center-block" alt="">
                 <br>
                 <p class="text-center"><spring:message code="message.main.benefits.free"/></p>
             </div>
             <div class="col-sm-4 portfolio-item">
-                <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img src="../../../resources/img/easy.png" class="img-responsive center-block" alt="">
-                </a>
+                <img src="../../../resources/img/easy.png" class="img-responsive center-block" alt="">
                 <br>
                 <p class="text-center"><spring:message code="message.main.benefits.easy"/></p>
             </div>
             <div class="col-sm-4 portfolio-item">
-                <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img src="../../../resources/img/socials.png" class="img-responsive center-block" alt="">
-                </a>
+                <img src="../../../resources/img/socials.png" class="img-responsive center-block" alt="">
                 <br>
                 <p class="text-center"><spring:message code="message.main.benefits.talk"/></p>
             </div>

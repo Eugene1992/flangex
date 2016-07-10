@@ -11,6 +11,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import ua.com.flangex.model.Country;
+import ua.com.flangex.model.Language;
 import ua.com.flangex.model.User;
 import ua.com.flangex.model.UserSearchParameters;
 import ua.com.flangex.repository.UserRepository;
@@ -33,8 +36,10 @@ public class SearchController {
     final static Logger logger = Logger.getLogger(SearchController.class);
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String search(){
+    public String search(ModelMap modelMap){
         logger.info("GET search page");
+        modelMap.addAttribute("countryList", Country.getCountries());
+        modelMap.addAttribute("languageList", Language.getLanguages());
         return "search";
     }
 

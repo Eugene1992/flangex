@@ -1,5 +1,6 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
@@ -19,7 +20,7 @@
             <div class="row">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad" >
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">${user.firstname} ${user.lastname}</h3>
@@ -39,26 +40,42 @@
                                                         <td>${user.firstname} ${user.lastname}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Age</td>
+                                                        <td>Age:</td>
                                                         <td>${user.age}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Gender</td>
+                                                        <td>Gender:</td>
                                                         <td>${user.gender}</td>
                                                     </tr>
 
                                                     <tr>
                                                     <tr>
-                                                        <td>Email</td>
+                                                        <td>Email:</td>
                                                         <td>${user.email}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Location</td>
+                                                        <td>Location:</td>
                                                         <td>${user.country}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>About me</td>
+                                                        <td>About me:</td>
                                                         <td>${user.description}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Native lang's:</td>
+                                                        <td>
+                                                            <c:forEach items="${user.nativeLanguages}" var="lang" varStatus="status">
+                                                                <c:out value="${lang}"/><c:if test="${!status.last}">,</c:if>
+                                                            </c:forEach>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Practicing lang's:</td>
+                                                        <td>
+                                                            <c:forEach items="${user.practicingLanguages}" var="lang" varStatus="status">
+                                                                <c:out value="${lang}"/><c:if test="${!status.last}">,</c:if>
+                                                            </c:forEach>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>Socials</td>

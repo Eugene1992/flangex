@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="footer-col col-md-4">
                     <h3><spring:message code="message.footer.contacts"/></h3>
-                    <p>3481 Melrose Place<br>Beverly Hills, CA 90210</p>
+                    <p>Ukraine, Kiev<br>Zdolbunovskaya str.</p>
                 </div>
                 <div class="footer-col col-md-4">
                     <h3><spring:message code="message.footer.socials"/></h3>

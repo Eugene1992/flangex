@@ -46,11 +46,10 @@
                                 <tr class="info">
                                     <th>Id</th>
                                     <th>Firstname</th>
-                                    <%--<th>Lastname</th>--%>
                                     <th>Age</th>
                                     <th>Gender</th>
                                     <th>Email</th>
-                                    <th>Password</th>
+                                    <%--<th>Password</th>--%>
                                     <th>Role</th>
                                     <th>Country</th>
                                     <th>Update</th>
@@ -64,11 +63,10 @@
                                     <tr>
                                         <td>${user.id}</td>
                                         <td>${user.firstname}</td>
-                                            <%--<td>${user.lastname}</td>--%>
                                         <td>${user.age}</td>
                                         <td>${user.gender}</td>
                                         <td>${user.email}</td>
-                                        <td>${user.password}</td>
+                                        <%--<td>${user.password}</td>--%>
                                         <td>${user.role}</td>
                                         <td>${user.country}</td>
                                         <td><button type="button" style="width: 100%" class="btn btn-info btn-xs" data-toggle="modal" data-target="#userModal${user.id}">Update</button></td>

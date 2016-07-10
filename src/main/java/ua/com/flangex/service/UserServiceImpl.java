@@ -43,7 +43,10 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional
     public List<User> createSearchQuery(UserSearchParameters usp) {
-        StringBuilder querySB = new StringBuilder("FROM User u WHERE ");
+        StringBuilder querySB = new StringBuilder("FROM User u ");
+        querySB.append("INNER JOIN u.nativeLanguages nl WITH nl.name = :nativeLang ");
+        querySB.append("INNER JOIN u.practicingLanguages pl WITH pl.name = :practicingLang ");
+        querySB.append("WHERE ");
 
         if (!usp.getFirstName().isEmpty()){
             querySB.append("u.firstname = :firstname AND ");
@@ -104,6 +107,9 @@ public class UserServiceImpl implements UserService{
         }
 
         Query query = sessionFactory.getCurrentSession().createQuery(queryString);
+
+        query.setParameter("nativeLang", usp.getNativeLanguage());
+        query.setParameter("practicingLang", usp.getPracticingLanguage());
 
         if (queryString.contains("firstname")){
             query.setParameter("firstname", usp.getFirstName());

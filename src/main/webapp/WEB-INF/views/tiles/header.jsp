@@ -18,18 +18,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <%--<li class="hidden">
-                    <a href="#page-top"></a>
-                </li>
-                <li class="page-scroll">
-                    <a href="#portfolio">Benefits</a>
-                </li>--%>
                 <li class="page-scroll">
                     <a href="/search"><spring:message code="message.search"/></a>
                 </li>
-                <%--<li class="page-scroll">
-                    <a href="#about">About</a>
-                </li>--%>
                 <li class="page-scroll">
                     <a href="/register"><spring:message code="message.registration"/></a>
                 </li>
@@ -37,7 +28,7 @@
                 <li class="dropdown page-scroll">
                     <a href="#" class="dropdown-toggle" id="login-dropdown-btn" data-toggle="dropdown" role="button" aria-expanded="false"><spring:message code="message.login"/></a>
                     <div class="dropdown-menu form-login stop-propagation" role="menu">
-                        <form action="j_spring_security_check" method="POST">
+                        <form action="j_spring_security_check" method="POST" id="login-form">
                             <div class="form-group form-group-sm">
                                 <input type="email" name="user_name" class="form-control" placeholder="Enter email" />
                             </div>
@@ -50,10 +41,6 @@
                             <div class="checkbox login-remember-me">
                                 <label><input type="checkbox" name="_spring_security_remember_me" >Remember me</label>
                             </div>
-                            <%--<div class="input-group input-group-sm">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input id="login-username" type="text" class="form-control" name="username" placeholder="Username">
-                            </div>--%>
                             <button type="submit" class="btn btn-success btn-block btn-sm"><spring:message code="message.login"/></button>
                         </form>
                     </div>

@@ -2,8 +2,11 @@ package ua.com.flangex.web;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import ua.com.flangex.model.Country;
+import ua.com.flangex.model.Language;
 import ua.com.flangex.model.User;
 
 import java.security.Principal;
@@ -20,15 +23,15 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView home(@RequestParam(value = "error", required = false) String error) {
+    public String home(@RequestParam(value = "error", required = false) String error, ModelMap modelMap) {
         logger.info("GET home page");
-        ModelAndView model = new ModelAndView();
         if (error != null) {
             logger.error("invalid username or password");
-            model.addObject("error", "Invalid username or password!");
+            modelMap.addAttribute("error", "Invalid username or password!");
         }
-        model.setViewName("home");
-        return model;
+        modelMap.addAttribute("countryList", Country.getCountries());
+        modelMap.addAttribute("languageList", Language.getLanguages());
+        return "home";
     }
 
     @RequestMapping(value = "/access-denied", method = RequestMethod.GET)

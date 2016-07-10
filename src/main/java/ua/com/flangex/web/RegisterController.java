@@ -35,11 +35,13 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute("user") @Valid User user, BindingResult result) {
+    public String register(@ModelAttribute("user") @Valid User user, BindingResult result, ModelMap modelMap) {
         user.setRole(Role.ROLE_ADMIN);
         validator.validate(user, result);
         if(result.hasErrors()) {
             logger.error("POST register form validation error");
+            modelMap.addAttribute("countryList", Country.getCountries());
+            modelMap.addAttribute("languageList", Language.getLanguages());
             return "register";
         }
         userRepository.save(user);
