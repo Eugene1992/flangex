@@ -14,8 +14,7 @@ import ua.com.flangex.model.Language;
 import ua.com.flangex.model.Role;
 import ua.com.flangex.model.User;
 import ua.com.flangex.model.validator.UserValidator;
-import ua.com.flangex.repository.UserRepository;
-
+import ua.com.flangex.service.UserService;
 import javax.validation.Valid;
 
 @Controller
@@ -25,7 +24,7 @@ public class RegisterController {
     private UserValidator validator;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     final static Logger logger = Logger.getLogger(RegisterController.class);
 
@@ -44,7 +43,7 @@ public class RegisterController {
             modelMap.addAttribute("languageList", Language.getLanguages());
             return "register";
         }
-        userRepository.save(user);
+        userService.save(user);
         logger.info("save new user: " + user);
         String url = String.format("redirect:/register-success?name=%s&email=%s",
                 user.getFirstname(),

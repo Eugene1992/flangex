@@ -8,9 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ua.com.flangex.model.Country;
 import ua.com.flangex.model.Language;
 import ua.com.flangex.model.User;
-
 import java.security.Principal;
-import java.util.Locale;
 
 @Controller
 public class HomeController {

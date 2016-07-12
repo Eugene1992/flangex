@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ua.com.flangex.model.Country;
 import ua.com.flangex.model.Language;
 import ua.com.flangex.model.User;
-import ua.com.flangex.repository.UserRepository;
-
+import ua.com.flangex.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
@@ -28,22 +27,22 @@ public class ProfileController {
     }
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     final static Logger logger = Logger.getLogger(ProfileController.class);
 
     @RequestMapping("/user/{id}")
     public String getUser(@PathVariable("id") int id, ModelMap model){
         logger.info("GET user " + id + "profile");
-        model.addAttribute("user", userRepository.get(id));
+        model.addAttribute("user", userService.get(id));
         return "user-profile";
     }
 
     @RequestMapping("/profile")
     public String userProfile(ModelMap modelMap, Principal principal){
         logger.info("GET personal profile");
-        modelMap.addAttribute("usersList", userRepository.getAll());
-        modelMap.addAttribute("authUser", userRepository.getByUsername(principal.getName()));
+        modelMap.addAttribute("usersList", userService.getAll());
+        modelMap.addAttribute("authUser", userService.getByEmail(principal.getName()));
         modelMap.addAttribute("countryList", Country.getCountries());
         modelMap.addAttribute("languageList", Language.getLanguages());
         return "personal-profile";
@@ -55,7 +54,7 @@ public class ProfileController {
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        userRepository.delete(id);
+        userService.delete(id);
         return "redirect:/";
     }
 }

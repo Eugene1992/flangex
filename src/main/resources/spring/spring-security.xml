@@ -8,12 +8,6 @@
        http://www.springframework.org/schema/security
        http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <!--<http auto-config="true">
-        <intercept-url pattern="/admin/*" access="ROLE_ADMIN" />
-        <intercept-url pattern="/admin" access="ROLE_ADMIN" />
-        <intercept-url pattern="/user/profile" access="ROLE_USER" />
-    </http>-->
-
     <http auto-config="true" use-expressions="true">
         <remember-me/>
             <access-denied-handler error-page="/access-denied" />

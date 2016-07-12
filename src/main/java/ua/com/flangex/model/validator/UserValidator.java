@@ -3,7 +3,6 @@ package ua.com.flangex.model.validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import ua.com.flangex.model.User;
 import ua.com.flangex.repository.UserRepository;
@@ -28,7 +27,7 @@ public class UserValidator implements Validator{
             errors.rejectValue("password", "validation.notmatch.password");
         }
 
-        if (userRepository.getByUsername(user.getEmail()) != null) {
+        if (userRepository.getByEmail(user.getEmail()) != null) {
             errors.rejectValue("email", "validation.registered.email");
         }
     }

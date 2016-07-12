@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ua.com.flangex.model.User;
 import ua.com.flangex.model.UserSearchParameters;
 import ua.com.flangex.repository.UserRepository;
-
 import java.util.List;
 
 @Service
@@ -21,8 +20,13 @@ public class UserServiceImpl implements UserService{
     private SessionFactory sessionFactory;
 
     @Override
-    public User save(User user) {
-        return null;
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public void update(User user) {
+        userRepository.update(user);
     }
 
     @Override
@@ -33,6 +37,11 @@ public class UserServiceImpl implements UserService{
     @Override
     public User get(int id) {
         return userRepository.get(id);
+    }
+
+    @Override
+    public User getByEmail(String email) {
+        return userRepository.getByEmail(email);
     }
 
     @Override

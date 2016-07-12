@@ -1,6 +1,5 @@
 package ua.com.flangex.repository;
 
-import org.hamcrest.MatcherAssert;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,9 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 import ua.com.flangex.model.*;
 
 import java.util.Arrays;
@@ -55,14 +52,31 @@ public class UserRepositoryImplTest {
     @Test
     public void saveTest() {
         userRepository.save(user);
-        User result = userRepository.getByUsername("deyneko55@gmail.com");
-        user.equals(result);
+        User result = userRepository.getByEmail("deyneko55@gmail.com");
         Assert.assertEquals(user, result);
     }
 
     @Test
     public void getTest(){
-        User user = userRepository.getByUsername("deyneko55@gmail.com");
-        Assert.assertEquals(user, null);
+        User result = userRepository.get(1);
+        Assert.assertEquals(result, user);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void getNotExistingUserTest(){
+        User result = userRepository.get(10);
+        result.getEmail();
+    }
+
+    @Test
+    public void getByEmailTest(){
+        User result = userRepository.getByEmail("deyneko55@gmail.com");
+        Assert.assertEquals(result, user);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void getByEmailNotExistingUserTest(){
+        User result = userRepository.getByEmail("deyneko1992@gmail.com");
+        result.getEmail();
     }
 }

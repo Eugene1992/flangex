@@ -1,34 +1,23 @@
 package ua.com.flangex.web;
 
 import org.apache.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import ua.com.flangex.model.Country;
 import ua.com.flangex.model.Language;
-import ua.com.flangex.model.User;
 import ua.com.flangex.model.UserSearchParameters;
-import ua.com.flangex.repository.UserRepository;
 import ua.com.flangex.service.UserService;
-
-import java.util.List;
 
 @Controller
 public class SearchController {
 
     @Autowired
     private UserService userService;
-
-    /*@PersistenceContext
-    private EntityManager entityManager;*/
 
     @Autowired
     SessionFactory sessionFactory;
@@ -78,9 +67,6 @@ public class SearchController {
                 googlePlusCheck,
                 vkontakteCheck
         );
-
-        //userService.createSearchQuery(usp);
-
         modelMap.addAttribute("usersList", userService.createSearchQuery(usp));
         modelMap.addAttribute("countryList", Country.getCountries());
         modelMap.addAttribute("languageList", Language.getLanguages());

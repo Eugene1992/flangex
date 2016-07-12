@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ua.com.flangex.model.User;
 import ua.com.flangex.repository.UserRepository;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,7 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.getByUsername(username);
+        User user = userRepository.getByEmail(username);
         Set<GrantedAuthority> roles = new HashSet();
         roles.add(new SimpleGrantedAuthority(user.getRole().name()));
         UserDetails userDetails =

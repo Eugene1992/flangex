@@ -9,23 +9,10 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
-@NamedQueries({
-        @NamedQuery(name = User.DELETE, query = "DELETE FROM User u WHERE u.id=:id"),
-        @NamedQuery(name = User.BY_CREDENTIALS, query = "SELECT u FROM User u WHERE u.email=?1 AND u.password=?2"),
-        @NamedQuery(name = User.BY_USERNAME, query = "SELECT u FROM User u WHERE u.email=?1"),
-        @NamedQuery(name = User.ALL_SORTED, query = "SELECT DISTINCT(u) FROM User u ORDER BY u.firstname, u.email"),
-})
 @Entity
 public class User extends BaseEntity {
-
-    public static final String DELETE = "User.delete";
-    public static final String BY_CREDENTIALS = "User.getByCredentials";
-    public static final String BY_USERNAME = "User.getByUsername";
-    public static final String ALL_SORTED = "User.getAllSorted";
 
     @NotEmpty(message = "{validation.required.firstname}")
     @Size(max = 10, message = "{validation.length.firstname}")
@@ -75,7 +62,6 @@ public class User extends BaseEntity {
     private String description;
 
     @Column(name = "facebook_link")
-    //@Pattern(regexp = "(?:(?:http|https):\\/\\/)?(?:www.)?facebook.com\\/(?:(?:\\w)*#!\\/)?(?:pages\\/)?(?:[?\\w\\-]*\\/)?(?:profile.php\\?id=(?=\\d.*))?([\\w\\-]*)?", message = "Wrong facebook link")
     private String facebookLink;
 
     @Column(name = "twitter_link")
@@ -150,8 +136,7 @@ public class User extends BaseEntity {
                 }
             }
         } else {
-            if (user.nativeLanguages != null)
-                return false;
+            if (user.nativeLanguages != null) return false;
         }
         if (practicingLanguages != null) {
             if (this.practicingLanguages.size() != user.practicingLanguages.size()) {
@@ -164,8 +149,7 @@ public class User extends BaseEntity {
                 }
             }
         } else {
-            if (user.practicingLanguages != null)
-                return false;
+            if (user.practicingLanguages != null) return false;
         }
         if (description != null ? !description.equals(user.description) : user.description != null) return false;
         if (facebookLink != null ? !facebookLink.equals(user.facebookLink) : user.facebookLink != null) return false;
@@ -178,7 +162,6 @@ public class User extends BaseEntity {
         if (instagramLink != null ? !instagramLink.equals(user.instagramLink) : user.instagramLink != null)
             return false;
         return role == user.role;
-
     }
 
     @Override

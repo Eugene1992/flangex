@@ -1,6 +1,5 @@
 package ua.com.flangex.repository;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import ua.com.flangex.model.User;
 
@@ -18,9 +17,7 @@ public interface UserRepository {
 
     List<User> getAll();
 
-    User getByCredentials(String email, String password);
-
-    User getByUsername(String email);
+    User getByEmail(String email);
 
     List<User> getAllByQuery(Query query);
 }
