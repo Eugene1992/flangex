@@ -18,7 +18,6 @@
         <remember-me/>
             <access-denied-handler error-page="/access-denied" />
 
-            <!--<intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />-->
             <intercept-url pattern="/profile" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
 
             <form-login

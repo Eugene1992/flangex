@@ -4,9 +4,12 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ua.com.flangex.model.User;
 import ua.com.flangex.repository.UserRepository;
 
 @Controller
@@ -24,10 +27,11 @@ public class AdminController {
         return "redirect:/profile";
     }
 
-    @RequestMapping("/update/{id}")
-    public String updateUser(@PathVariable("id") int id){
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String updateUser(@PathVariable("id") int id, @ModelAttribute("user") User user,
+                             BindingResult result){
         logger.info("update user " + id);
-        userRepository.delete(id);
+        userRepository.update(user);
         return "redirect:/profile";
     }
 }

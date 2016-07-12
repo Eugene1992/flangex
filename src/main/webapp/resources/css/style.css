@@ -595,8 +595,9 @@ footer .footer-below {
 }
 
 .admin-content {
-    padding-top: 70px;
-    height: 800px;
+    padding: 70px 15px 0;
+    margin-bottom: 10px;
+    min-height: 700px;
 }
 
 .table>thead>tr>td.info, .table>tbody>tr>td.info, .table>tfoot>tr>td.info, .table>thead>tr>th.info, .table>tbody>tr>th.info, .table>tfoot>tr>th.info, .table>thead>tr.info>td, .table>tbody>tr.info>td, .table>tfoot>tr.info>td, .table>thead>tr.info>th, .table>tbody>tr.info>th, .table>tfoot>tr.info>th {
@@ -867,4 +868,29 @@ div.dataTables_wrapper div.dataTables_filter input {
 
 #login-form {
     margin-bottom: 5px;
+}
+
+.modal-header {
+    color: white;
+}
+
+.modal .close, .close:hover {
+    font-size: 30px;
+    color: white;
+}
+
+#confirm-delete .modal-dialog{
+    width: 300px;
+}
+
+#confirm-delete .modal-dialog p{
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+#confirm-delete .modal-body {
+    background-color: #18BC9C;
+    color: white;
+    border-radius: 5px 5px 0 0;
 }

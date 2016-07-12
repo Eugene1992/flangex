@@ -29,6 +29,11 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public void update(User user) {
+        sessionFactory.getCurrentSession().update(user);
+    }
+
+    @Override
     @Transactional
     public boolean delete(int id) {
         Session session = this.sessionFactory.getCurrentSession();

@@ -74,8 +74,6 @@ public class User extends BaseEntity {
 
     private String description;
 
-    private LocalDate registered = LocalDate.now();
-
     @Column(name = "facebook_link")
     //@Pattern(regexp = "(?:(?:http|https):\\/\\/)?(?:www.)?facebook.com\\/(?:(?:\\w)*#!\\/)?(?:pages\\/)?(?:[?\\w\\-]*\\/)?(?:profile.php\\?id=(?=\\d.*))?([\\w\\-]*)?", message = "Wrong facebook link")
     private String facebookLink;
@@ -122,6 +120,65 @@ public class User extends BaseEntity {
         this.lastname = lastname;
         this.nativeLanguages = nativeLanguages;
         this.practicingLanguages = practicingLanguages;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (firstname != null ? !firstname.equals(user.firstname) : user.firstname != null) return false;
+        if (lastname != null ? !lastname.equals(user.lastname) : user.lastname != null) return false;
+        if (age != null ? !age.equals(user.age) : user.age != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (confirmedPassword != null ? !confirmedPassword.equals(user.confirmedPassword) : user.confirmedPassword != null)
+            return false;
+        if (gender != null ? !gender.equals(user.gender) : user.gender != null) return false;
+        if (country != null ? !country.equals(user.country) : user.country != null) return false;
+        if (city != null ? !city.equals(user.city) : user.city != null) return false;
+        if (nativeLanguages != null ? !nativeLanguages.equals(user.nativeLanguages) : user.nativeLanguages != null)
+            return false;
+        if (practicingLanguages != null ? !practicingLanguages.equals(user.practicingLanguages) : user.practicingLanguages != null)
+            return false;
+        if (description != null ? !description.equals(user.description) : user.description != null) return false;
+        if (facebookLink != null ? !facebookLink.equals(user.facebookLink) : user.facebookLink != null) return false;
+        if (twitterLink != null ? !twitterLink.equals(user.twitterLink) : user.twitterLink != null) return false;
+        if (googlePlusLink != null ? !googlePlusLink.equals(user.googlePlusLink) : user.googlePlusLink != null)
+            return false;
+        if (vkontakteLink != null ? !vkontakteLink.equals(user.vkontakteLink) : user.vkontakteLink != null)
+            return false;
+        if (linkedInLink != null ? !linkedInLink.equals(user.linkedInLink) : user.linkedInLink != null) return false;
+        if (instagramLink != null ? !instagramLink.equals(user.instagramLink) : user.instagramLink != null)
+            return false;
+        return role == user.role;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstname != null ? firstname.hashCode() : 0;
+        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (age != null ? age.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (confirmedPassword != null ? confirmedPassword.hashCode() : 0);
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (nativeLanguages != null ? nativeLanguages.hashCode() : 0);
+        result = 31 * result + (practicingLanguages != null ? practicingLanguages.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (facebookLink != null ? facebookLink.hashCode() : 0);
+        result = 31 * result + (twitterLink != null ? twitterLink.hashCode() : 0);
+        result = 31 * result + (googlePlusLink != null ? googlePlusLink.hashCode() : 0);
+        result = 31 * result + (vkontakteLink != null ? vkontakteLink.hashCode() : 0);
+        result = 31 * result + (linkedInLink != null ? linkedInLink.hashCode() : 0);
+        result = 31 * result + (instagramLink != null ? instagramLink.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        return result;
     }
 
     public String getFirstname() {
@@ -220,14 +277,6 @@ public class User extends BaseEntity {
         this.description = description;
     }
 
-    public LocalDate getRegistered() {
-        return registered;
-    }
-
-    public void setRegistered(LocalDate registered) {
-        this.registered = registered;
-    }
-
     public String getFacebookLink() {
         return facebookLink;
     }
@@ -299,7 +348,7 @@ public class User extends BaseEntity {
                 ", nativeLanguages=" + nativeLanguages +
                 ", practicingLanguages=" + practicingLanguages +
                 ", description='" + description + '\'' +
-                ", registered=" + registered +
+                ", registered=" +
                 ", role=" + role +
                 '}';
     }

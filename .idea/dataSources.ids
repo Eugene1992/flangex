@@ -71,6 +71,7 @@
         <data-type>varchar(255)</data-type>
       </column>
       <column id="20" parent="4" name="confirmed_password">
+        <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
       <column id="21" parent="4" name="country">
@@ -89,7 +90,7 @@
       </column>
       <column id="25" parent="4" name="first_name">
         <mandatory>1</mandatory>
-        <data-type>varchar(255)</data-type>
+        <data-type>varchar(10)</data-type>
       </column>
       <column id="26" parent="4" name="gender">
         <mandatory>1</mandatory>
@@ -108,7 +109,8 @@
         <data-type>varchar(255)</data-type>
       </column>
       <column id="31" parent="4" name="password">
-        <data-type>varchar(255)</data-type>
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
       </column>
       <column id="32" parent="4" name="registered">
         <data-type>tinyblob</data-type>

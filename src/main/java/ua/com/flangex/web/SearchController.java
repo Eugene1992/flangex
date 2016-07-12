@@ -44,7 +44,7 @@ public class SearchController {
     }
 
     @RequestMapping(value = "/searching", method = RequestMethod.GET)
-    public String searching(ModelMap model,
+    public String searching(ModelMap modelMap,
            @RequestParam(value = "firstname", required = false)             String firstname,
            @RequestParam(value = "lastname", required = false)              String lastname,
            @RequestParam(value = "country", required = false)               String country,
@@ -81,7 +81,9 @@ public class SearchController {
 
         //userService.createSearchQuery(usp);
 
-        model.addAttribute("usersList", userService.createSearchQuery(usp));
+        modelMap.addAttribute("usersList", userService.createSearchQuery(usp));
+        modelMap.addAttribute("countryList", Country.getCountries());
+        modelMap.addAttribute("languageList", Language.getLanguages());
         return "search";
     }
 }

@@ -11,10 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import ua.com.flangex.model.NativeLanguage;
-import ua.com.flangex.model.PracticingLanguage;
-import ua.com.flangex.model.Role;
-import ua.com.flangex.model.User;
+import ua.com.flangex.model.*;
 
 import java.util.Arrays;
 
@@ -36,21 +33,35 @@ public class UserRepositoryImplTest {
         user = new User(
                 "Eugene",
                 "Deyneka",
-                Arrays.asList(),
-                Arrays.asList()
-        );
+                23,
+                "deyneko55@gmail.com",
+                "26121992",
+                "26121992",
+                "Male",
+                "Ukraine",
+                "Kiev",
+                Arrays.asList(
+                        new NativeLanguage(Language.UKRAINIAN.name()),
+                        new NativeLanguage(Language.RUSSIAN.name())
+                ),
+                Arrays.asList(
+                        new PracticingLanguage(Language.ENGLISH.name()),
+                        new PracticingLanguage(Language.SPANISH.name())
+                ),
+                "London is a capital of Great Britain!",
+                Role.ROLE_ADMIN);
     }
 
     @Test
     public void saveTest() {
-        //User savedUser = userRepository.save(user);
-        //Assert.assertEquals(user, savedUser);
+        userRepository.save(user);
+        User result = userRepository.getByUsername("deyneko55@gmail.com");
+        Assert.assertEquals(user, result);
     }
 
     @Test
     public void getTest(){
-        User user = userRepository.getByUsername("Eugene");
-        System.out.println(user);
+        User user = userRepository.getByUsername("deyneko55@gmail.com");
         Assert.assertEquals(user, null);
     }
 }

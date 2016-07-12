@@ -10,6 +10,8 @@ public interface UserRepository {
 
     void save(User user);
 
+    void update(User user);
+
     boolean delete(int id);
 
     User get(int id);
