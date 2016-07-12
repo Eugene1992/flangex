@@ -56,6 +56,7 @@ public class UserRepositoryImplTest {
     public void saveTest() {
         userRepository.save(user);
         User result = userRepository.getByUsername("deyneko55@gmail.com");
+        user.equals(result);
         Assert.assertEquals(user, result);
     }
 

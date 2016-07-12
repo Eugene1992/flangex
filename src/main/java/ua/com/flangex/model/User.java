@@ -139,10 +139,34 @@ public class User extends BaseEntity {
         if (gender != null ? !gender.equals(user.gender) : user.gender != null) return false;
         if (country != null ? !country.equals(user.country) : user.country != null) return false;
         if (city != null ? !city.equals(user.city) : user.city != null) return false;
-        if (nativeLanguages != null ? !nativeLanguages.equals(user.nativeLanguages) : user.nativeLanguages != null)
-            return false;
-        if (practicingLanguages != null ? !practicingLanguages.equals(user.practicingLanguages) : user.practicingLanguages != null)
-            return false;
+        if (nativeLanguages != null) {
+            if (this.nativeLanguages.size() != user.nativeLanguages.size()) {
+                return false;
+            } else {
+                for (int i = 0; i < nativeLanguages.size(); i++) {
+                    if (!this.nativeLanguages.get(i).equals(user.nativeLanguages.get(i))) {
+                        return false;
+                    }
+                }
+            }
+        } else {
+            if (user.nativeLanguages != null)
+                return false;
+        }
+        if (practicingLanguages != null) {
+            if (this.practicingLanguages.size() != user.practicingLanguages.size()) {
+                return false;
+            } else {
+                for (int i = 0; i < practicingLanguages.size(); i++) {
+                    if (!this.practicingLanguages.get(i).equals(user.practicingLanguages.get(i))) {
+                        return false;
+                    }
+                }
+            }
+        } else {
+            if (user.practicingLanguages != null)
+                return false;
+        }
         if (description != null ? !description.equals(user.description) : user.description != null) return false;
         if (facebookLink != null ? !facebookLink.equals(user.facebookLink) : user.facebookLink != null) return false;
         if (twitterLink != null ? !twitterLink.equals(user.twitterLink) : user.twitterLink != null) return false;
