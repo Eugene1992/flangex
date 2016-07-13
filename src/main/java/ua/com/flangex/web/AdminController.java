@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ua.com.flangex.model.NativeLanguage;
+import ua.com.flangex.model.PracticingLanguage;
 import ua.com.flangex.model.User;
 import ua.com.flangex.service.UserService;
+
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -29,6 +33,10 @@ public class AdminController {
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String updateUser(@PathVariable("id") int id, @ModelAttribute("user") User user, BindingResult result){
         logger.info("update user " + id);
+        List<NativeLanguage> nl = user.getNativeLanguages().subList(1, user.getNativeLanguages().size());
+        user.setNativeLanguages(nl);
+        List<PracticingLanguage> pl = user.getPracticingLanguages().subList(1, user.getPracticingLanguages().size());
+        user.setPracticingLanguages(pl);
         userService.update(user);
         return "redirect:/profile";
     }

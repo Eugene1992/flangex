@@ -1,7 +1,5 @@
 package ua.com.flangex.model;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
@@ -50,13 +48,11 @@ public class User extends BaseEntity {
     @NotEmpty(message = "{validation.required.native-language}")
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    @Fetch(value = FetchMode.SUBSELECT)
     private List<NativeLanguage> nativeLanguages;
 
     @NotEmpty(message = "{validation.required.practicing-language}")
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
-    @Fetch(value = FetchMode.SUBSELECT) // SUBSELECT org.hibernate.loader.MultipleBagFetchException: cannot simultaneously fetch multiple bags criteria
     private List<PracticingLanguage> practicingLanguages;
 
     private String description;
@@ -99,13 +95,6 @@ public class User extends BaseEntity {
         this.practicingLanguages = practicingLanguages;
         this.description = description;
         this.role = role;
-    }
-
-    public User(String firstname, String lastname, List<NativeLanguage> nativeLanguages, List<PracticingLanguage> practicingLanguages) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.nativeLanguages = nativeLanguages;
-        this.practicingLanguages = practicingLanguages;
     }
 
     @Override

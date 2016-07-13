@@ -8,13 +8,6 @@
 
        <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 
-       <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-            <property name="driverClassName" value="${database.driver}" />
-            <property name="url" value="${database.url}" />
-            <property name="username" value="${database.user}" />
-            <property name="password" value="${database.password}" />
-       </bean>
-
        <!-- Session Factory config -->
        <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
             <property name="dataSource" ref="dataSource"/>
@@ -37,6 +30,26 @@
        </bean>
 
        <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+        <beans profile="mysql">
+            <context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>
+            <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+                <property name="driverClassName" value="${database.driver}" />
+                <property name="url" value="${database.url}" />
+                <property name="username" value="${database.user}" />
+                <property name="password" value="${database.password}" />
+            </bean>
+        </beans>
+
+        <beans profile="hsql">
+            <context:property-placeholder location="classpath:db/hsql.properties" system-properties-mode="OVERRIDE"/>
+            <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+                <property name="driverClassName" value="${database.driver}" />
+                <property name="url" value="${database.url}" />
+                <property name="username" value="${database.user}" />
+                <property name="password" value="${database.password}" />
+            </bean>
+        </beans>
 
     <!-- Entity Manager Factory config -->
     <!--<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

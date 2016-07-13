@@ -304,7 +304,7 @@
                                                             <div class="modal-body">
                                                                 <div class="form-group form-group-sm col-md-6">
                                                                     <form:label path="firstname">First Name:</form:label>
-                                                                    <form:input path="firstname" class="form-control" value="${authUser.firstname}"/>
+                                                                    <form:input path="firstname" class="form-control" value="${authUser.firstname}" required="true"/>
                                                                 </div>
                                                                 <div class="form-group form-group-sm col-md-6">
                                                                     <form:label path="lastname">Last Name:</form:label>
@@ -312,12 +312,12 @@
                                                                 </div>
                                                                 <div class="form-group form-group-sm col-md-6">
                                                                     <form:label path="password">Password:</form:label>
-                                                                    <form:input path="password" class="form-control" value="${authUser.password}"/>
+                                                                    <form:input path="password" class="form-control" value="${authUser.password}" required="true"/>
                                                                 </div>
                                                                 <form:hidden path="role" class="form-control" value="${authUser.role}"/>
                                                                 <div class="form-group form-group-sm col-md-6">
                                                                     <form:label path="password">Confirm password:</form:label>
-                                                                    <form:input path="confirmedPassword" class="form-control" value="${authUser.confirmedPassword}"/>
+                                                                    <form:input path="confirmedPassword" class="form-control" value="${authUser.confirmedPassword}" required="true"/>
                                                                 </div>
                                                                 <div class="form-group form-group-sm col-md-6">
                                                                     <form:label path="email">Email:</form:label>
@@ -325,11 +325,11 @@
                                                                 </div>
                                                                 <div class="form-group form-group-sm col-md-3">
                                                                     <form:label path="age">Age:</form:label>
-                                                                    <form:input type="number" min="0" max="120" path="age" class="form-control" value="${authUser.age}"/>
+                                                                    <form:input type="number" min="0" max="120" path="age" class="form-control" value="${authUser.age}" required="true"/>
                                                                 </div>
                                                                 <div class="form-group form-group-sm col-md-3">
                                                                     <form:label path="gender">Gender:</form:label>
-                                                                    <form:select path="gender" class="form-control" >
+                                                                    <form:select path="gender" class="form-control" required="true">
                                                                         <c:choose>
                                                                             <c:when test="${authUser.gender=='Male'}">
                                                                                 <option selected>Male</option>
@@ -346,7 +346,7 @@
                                                                 <form:hidden path="practicingLanguages" value="${authUser.practicingLanguages}"/>
                                                                 <div class="form-group form-group-sm col-md-6">
                                                                     <form:label path="country">Country:</form:label>
-                                                                    <form:select path="country" class="form-control" >
+                                                                    <form:select path="country" class="form-control" required="true">
                                                                         <c:forEach items="${countryList}" var="country">
                                                                             <c:choose>
                                                                             <c:when test="${authUser.country eq country}">
@@ -369,7 +369,7 @@
                                                                 </div>
                                                                 <div class="form-group form-group-sm col-md-6">
                                                                     <form:label path="nativeLanguages">Native language(s):</form:label>
-                                                                    <form:select path="nativeLanguages" class="form-control" size="6">
+                                                                    <form:select path="nativeLanguages" class="form-control" size="6" required="true">
                                                                         <c:forEach items="${languageList}" var="lang">
                                                                             <c:set var="contains" value="false" />
                                                                             <c:forEach items="${authUser.nativeLanguages}" var="natLang">
@@ -390,7 +390,7 @@
                                                                 </div>
                                                                 <div class="form-group form-group-sm col-md-6">
                                                                     <form:label path="practicingLanguages">Practicing language(s):</form:label>
-                                                                    <form:select path="practicingLanguages" class="form-control" size="6">
+                                                                    <form:select path="practicingLanguages" class="form-control" size="6" required="true">
                                                                         <c:forEach items="${languageList}" var="lang">
                                                                             <c:set var="contains" value="false" />
                                                                             <c:forEach items="${authUser.practicingLanguages}" var="practLang">

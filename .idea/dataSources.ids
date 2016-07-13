@@ -112,19 +112,16 @@
         <mandatory>1</mandatory>
         <data-type>varchar(20)</data-type>
       </column>
-      <column id="32" parent="4" name="registered">
-        <data-type>tinyblob</data-type>
-      </column>
-      <column id="33" parent="4" name="role">
+      <column id="32" parent="4" name="role">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="34" parent="4" name="twitter_link">
+      <column id="33" parent="4" name="twitter_link">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="35" parent="4" name="vkontakte_link">
+      <column id="34" parent="4" name="vkontakte_link">
         <data-type>varchar(255)</data-type>
       </column>
-      <key id="36" parent="4" name="PRIMARY">
+      <key id="35" parent="4" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
