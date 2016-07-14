@@ -17,6 +17,7 @@
         <hibernate.version>4.3.6.Final</hibernate.version>
         <java.version>1.8</java.version>
         <postgresql.version>9.4-1201-jdbc41</postgresql.version>
+        <tomcat.version>7.0.57</tomcat.version>
     </properties>
 
     <dependencies>
@@ -187,6 +188,11 @@
                     <artifactId>postgresql</artifactId>
                     <version>${postgresql.version}</version>
                     <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
+                    <version>${tomcat.version}</version>
                 </dependency>
             </dependencies>
             <activation>
