@@ -17,11 +17,12 @@ import java.util.List;
 
 @Controller
 public class AdminController {
+    final static Logger logger = Logger.getLogger(AdminController.class);
 
     @Autowired
     private UserService userService;
 
-    final static Logger logger = Logger.getLogger(AdminController.class);
+
 
     @RequestMapping("/remove/{id}")
     public String removeUser(@PathVariable("id") int id){
@@ -30,6 +31,13 @@ public class AdminController {
         return "redirect:/profile";
     }
 
+    /**
+     *
+     * @param id
+     * @param user
+     * @param result
+     * @return
+     */
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String updateUser(@PathVariable("id") int id, @ModelAttribute("user") User user, BindingResult result){
         logger.info("update user " + id);

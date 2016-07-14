@@ -8,7 +8,7 @@
         <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
         <link rel="stylesheet" href="../../../resources/css/bootstrap.min.css">
         <!-- Custom Fonts -->
-        <link href="../../../resources/css/style.css" rel="stylesheet">
+        <link href="${param.contextPath}/resources/css/style.css" rel="stylesheet">
         <!-- Custom Fonts -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
         <%-- Glyphicons --%>

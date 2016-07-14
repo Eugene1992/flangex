@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@Table(name = "app_user")
+@Table(name = "app_user", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 public class User extends BaseEntity {
 
     @NotEmpty(message = "{validation.required.firstname}")

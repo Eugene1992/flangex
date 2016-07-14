@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS user_app;
+DROP TABLE IF EXISTS native_language;
+DROP TABLE IF EXISTS practicing_language;
+
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `age` int(11) NOT NULL,

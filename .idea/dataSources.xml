@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="719987691">
+  <component name="DataSourceManagerImpl" format="xml" hash="1963970718">
     <data-source source="LOCAL" name="MySQL - flangex@localhost" uuid="31ab1ba5-c7af-47fe-b72d-9931af04d48a">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -14,21 +14,7 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="heroku_mysql" uuid="4f8a93ae-4eb6-4620-bf69-17a7f49cb0f7">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://eu-cdbr-west-01.cleardb.com:3306/heroku_5910038e3f5cedb</jdbc-url>
-      <driver-properties>
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-        <property name="autoReconnect" value="true" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="PostgreSQL - de78i1pl7c75h5@ec2-54-247-121-238.eu-west-1.compute.amazonaws.com" uuid="0794338a-0cdb-4706-9bf3-7b123a283819">
+    <data-source source="LOCAL" name="heroku_PostgreSQL" uuid="0794338a-0cdb-4706-9bf3-7b123a283819">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
@@ -38,6 +24,12 @@
         <property name="ssl" value="true" />
         <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
       </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="HSQLDB (Local) - temp" uuid="4484ea1c-0eeb-4b6a-a470-97c329c3ed62">
+      <driver-ref>hsqldb.local</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:file:c:/temp/flangex</jdbc-url>
     </data-source>
   </component>
 </project>
