@@ -84,7 +84,7 @@
           <element id="library" level="project" name="Maven: javax.el:javax.el-api:2.2.4" />
           <element id="library" level="project" name="Maven: org.glassfish.web:el-impl:2.2" />
           <element id="library" level="project" name="Maven: javax.el:el-api:2.2" />
-          <element id="library" level="project" name="Maven: postgresql:postgresql:9.1-901.jdbc4" />
+          <element id="library" level="project" name="Maven: org.postgresql:postgresql:9.4-1201-jdbc41" />
         </element>
       </element>
       <element id="directory" name="META-INF">
