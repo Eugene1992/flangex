@@ -70,6 +70,7 @@
             </bean>
         </beans>
 
+
         <beans profile="hsql">
             <context:property-placeholder location="classpath:db/hsql.properties" system-properties-mode="OVERRIDE"/>
             <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

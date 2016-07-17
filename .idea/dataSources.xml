@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2927634065">
+  <component name="DataSourceManagerImpl" format="xml" hash="4179619337">
     <data-source source="LOCAL" name="heroku_PostgreSQL" uuid="0794338a-0cdb-4706-9bf3-7b123a283819">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
@@ -36,6 +36,19 @@
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/flangex</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="MySQL - heroku_5910038e3f5cedb@eu-cdbr-west-01.cleardb.com" uuid="8540c421-7d27-40d7-a485-4cb2c46b24f3">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://eu-cdbr-west-01.cleardb.com:3306/heroku_5910038e3f5cedb</jdbc-url>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
     </data-source>
   </component>
 </project>
