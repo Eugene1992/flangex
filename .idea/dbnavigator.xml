@@ -38,9 +38,9 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/src/main/resources/sql/init-db-postgres.sql" connection-id="virtual-postgres-connection" current-schema="ROOT" />
-    <mapping file-url="file://$PROJECT_DIR$/src/main/resources/sql/populate-db.sql" connection-id="virtual-mysql-connection" current-schema="ROOT" />
     <mapping file-url="file://$PROJECT_DIR$/src/main/resources/sql/init-db-mysql.sql" connection-id="4b8b89c7-b304-4d77-b1b0-885808130879" current-schema="flangex" />
+    <mapping file-url="file://$PROJECT_DIR$/src/main/resources/sql/populate-db.sql" connection-id="virtual-mysql-connection" current-schema="ROOT" />
+    <mapping file-url="file://$PROJECT_DIR$/src/main/resources/sql/init-db-postgres.sql" connection-id="virtual-postgres-connection" current-schema="ROOT" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />

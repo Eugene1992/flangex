@@ -20,11 +20,11 @@
             <property name="packagesToScan" value="ua.com.flangex.model" />
             <property name="hibernateProperties">
                 <props>
-                    <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                    <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
                     <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
                     <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                     <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-                    <prop key="hibernate.hbm2ddl.import_files">sql/init-db-mysql.sql</prop>
+                    <prop key="hibernate.hbm2ddl.import_files">sql/init-db-postgres.sql</prop>
                     <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
                 </props>
             </property>
@@ -36,6 +36,16 @@
        </bean>
 
        <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+        <beans profile="postgres">
+            <context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>
+            <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+                <property name="driverClassName" value="org.postgresql.Driver" />
+                <property name="url" value="jdbc:postgresql://localhost:5432/flangex" />
+                <property name="username" value="postgres" />
+                <property name="password" value="root" />
+            </bean>
+        </beans>
 
         <beans profile="mysql">
             <context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>
