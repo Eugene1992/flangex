@@ -1,14 +1,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd
                            http://www.springframework.org/schema/tx
-                           http://www.springframework.org/schema/tx/spring-tx.xsd">
+                           http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
        <context:property-placeholder location="classpath:db/mysql.properties" />
 
@@ -24,7 +23,7 @@
                     <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
                     <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
                     <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-                    <prop key="hibernate.hbm2ddl.import_files">sql/init-db-postgres.sql</prop>
+                    <!--<prop key="hibernate.hbm2ddl.import_files">sql/populate-db.sql</prop>-->
                     <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
                 </props>
             </property>

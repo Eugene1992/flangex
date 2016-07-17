@@ -3,15 +3,15 @@
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false" profiles="postgres">
+        <fileset id="fileset" name="Spring Application Context" removed="false" profiles="heroku">
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-mvc.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-db.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-app.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-security.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/spring-security.xml</file>
         </fileset>
-        <fileset id="web application context" profiles="postgres" autodetected="true" />
-        <fileset id="web spring-mvc servlet context" profiles="postgres" autodetected="true" />
+        <fileset id="web application context" profiles="heroku" autodetected="true" />
+        <fileset id="web spring-mvc servlet context" profiles="heroku" autodetected="true" />
       </configuration>
     </facet>
     <facet type="web" name="Web">
