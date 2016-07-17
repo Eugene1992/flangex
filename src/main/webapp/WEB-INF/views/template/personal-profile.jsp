@@ -197,7 +197,7 @@
                         <div id="menu1" class="tab-pane fade in active">
                             <div class="row">
                                 <div class="col-md-3 col-md-offset-1">
-                                    <img src="${param.contextPath}/resources/img/user-${authUser.gender}.png" alt="user-picture" class="img-responsive img-rounded user-logo-img">
+                                    <img src="${param.contextPath}/resources/img/user-Male.png" alt="user-picture" class="img-responsive img-rounded user-logo-img">
                                     <br>
                                     <div class="text-center">
                                         <button style="width: 49%;" class="btn btn-sm btn-success " data-toggle="modal" data-target="#authUserModal">Edit profile</button>
