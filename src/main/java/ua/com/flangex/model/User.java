@@ -30,7 +30,7 @@ public class User extends BaseEntity {
     @Email(message = "validation.wrong-formed.email")
     private String email;
 
-    @Size(min = 6, max = 20, message = "{validation.length.password}")
+    //@Size(min = 6, max = 20, message = "{validation.length.password}")
     @NotEmpty(message = "{validation.required.password}")
     private String password;
 

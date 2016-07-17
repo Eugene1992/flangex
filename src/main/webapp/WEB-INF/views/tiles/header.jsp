@@ -13,7 +13,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><img src="../../../resources/img/logo-sm.png" alt="Flagex-logo"></a>
+            <a class="navbar-brand" href="/"><img src="${param.contextPath}/resources/img/logo-sm.png" alt="Flagex-logo"></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,7 +48,7 @@
                 </sec:authorize>
 
                 <sec:authorize access="isAuthenticated()">
-                    <li class="dropdown">
+                    <li class="dropdown page-scroll">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Welcome, <span class="loged-username-greeting"><security:authentication property="principal.username" /><span class="caret"></span></span></a>
                         <ul class="dropdown-menu" id="dropdown-loged-user-menu">
                             <li><a href="/profile">Cabinet<span class="glyphicon glyphicon-user pull-right"></span></a></li>
@@ -60,7 +60,7 @@
                 </sec:authorize>
 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">ENG <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" id="lang-switch"><span id="lang">ENG</span> <span class="caret"></span></a>
                     <ul class="dropdown-menu lang-change" id="dropdown-lang-switch" >
                         <li><a href="?lang=ru">RUS</a></li>
                         <li><a href="?lang=en">ENG</a></li>

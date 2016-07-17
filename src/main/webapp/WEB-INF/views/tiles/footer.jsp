@@ -29,7 +29,7 @@
                 </div>
                 <div class="footer-col col-md-4">
                     <h3>About project</h3>
-                    <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                    <p><a href="/about" class="theme-green">Click here</a> and find out more about the project.</p>
                 </div>
             </div>
         </div>

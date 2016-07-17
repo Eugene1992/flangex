@@ -332,6 +332,14 @@ form .row:first-child .floating-label-form-group {
     border-top: 1px solid #eee;
 }
 
+.theme-green {
+    color: #18BC9C;
+}
+
+.theme-dark-blue {
+    color: #2C3E50;
+}
+
 footer {
     color: #fff;
 }
@@ -652,8 +660,8 @@ div.dataTables_wrapper div.dataTables_filter input {
 .table-user-information > tbody > tr > td {
     border-top: 0;
 }
-.toppad
-{margin-top: 80px;
+.toppad {
+    margin-top: 80px;
 }
 
 #vk-profile-icon {
@@ -879,18 +887,70 @@ div.dataTables_wrapper div.dataTables_filter input {
     color: white;
 }
 
-#confirm-delete .modal-dialog{
+.confirm-delete .modal-dialog{
     width: 300px;
 }
 
-#confirm-delete .modal-dialog p{
+.confirm-delete .modal-dialog p{
     font-weight: bold;
     margin: 0;
     text-align: center;
 }
 
-#confirm-delete .modal-body {
+.confirm-delete .modal-body {
     background-color: #18BC9C;
     color: white;
     border-radius: 5px 5px 0 0;
+}
+
+.user-logo-img {
+    margin: 0 auto;
+}
+
+#cv-download {
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+    font-size: 19px;
+    border-radius: 0 0 4px 4px;
+}
+
+#cv-download hr{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-top: 1px solid #eeeeee;
+}
+
+#cv-download a:hover{
+    opacity: 0.9;
+}
+
+#author-img {
+    padding: 0;
+    border-radius: 4px 4px 0 0;
+    margin-top: 25px;
+}
+
+.tech-stack-img {
+    height: 80px;
+    width: 150px;
+}
+
+.tech-stack-img-row {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.about-descr > p{
+    text-align: justify;
+}
+
+#git-repo-logo{
+    font-size: 2.0em;
+    line-height: .75em;
+    vertical-align: -25%;
+    color: #333333;
+}
+
+#git-repo-logo:hover{
+    color: #18BC9C;
 }

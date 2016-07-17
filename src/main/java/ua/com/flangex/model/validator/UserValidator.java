@@ -23,11 +23,18 @@ public class UserValidator implements Validator{
 
         User user = (User)obj;
 
-        if(!(user.getPassword().equals(user.getConfirmedPassword()))){
+        String email = user.getEmail();
+        String password = user.getPassword();
+        String confirmedPassword = user.getConfirmedPassword();
+        int passLength = password.length();
+
+        if (passLength > 0 && passLength < 6 || passLength > 20){
+            errors.rejectValue("password", "validation.length.password");
+        } else if(passLength > 0 && !(password.equals(confirmedPassword))){
             errors.rejectValue("password", "validation.notmatch.password");
         }
 
-        if (userRepository.getByEmail(user.getEmail()) != null) {
+        if (userRepository.getByEmail(email) != null) {
             errors.rejectValue("email", "validation.registered.email");
         }
     }

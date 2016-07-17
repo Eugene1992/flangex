@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <img class="img-responsive" src="../../../resources/img/logo-lg.png" alt="">
+                <img class="img-responsive" src="${param.contextPath}/resources/img/logo-lg.png" alt="">
                 <hr>
                 <div class="intro-text">
                     <span class="name">Free Language Exchange</span>

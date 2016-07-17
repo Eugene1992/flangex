@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RandomUsersQueryGenerator {
     public static void main(String[] args) {
-        generateUserSQLquery(10);
+        generateUserSQLquery(50);
     }
 
     static void generateUserSQLquery(int numOfUsers){
@@ -26,30 +26,30 @@ public class RandomUsersQueryGenerator {
                 gender = "Male";
                 name = getMaleName();
                 email = getEmail(name);
-                System.out.println(String.format("INSERT INTO user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description, facebook_link, twitter_link, google_link, vkontakte_link, linkedIn_link, instagram_link) VALUES (\"%s\", '', \"%s\", 'ROLE_USER', \"%s\", \"%s\", %d, '', \"%s\", \"%s\", 'London is a capital of Great Britain!', \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\");", name, email, password, password, age, country, gender, facebookLink, twitterkLink, googlePlusLink, vkLink, linkedInLink, instagramkLink));
+                System.out.println(String.format("INSERT INTO app_user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description, facebook_link, twitter_link, google_link, vkontakte_link, linkedIn_link, instagram_link) VALUES ('%s', '', '%s', 'ROLE_USER', '%s', '%s', %d, '', '%s', '%s', 'London is a capital of Great Britain!', '%s', '%s', '%s', '%s', '%s', '%s');", name, email, password, password, age, country, gender, facebookLink, twitterkLink, googlePlusLink, vkLink, linkedInLink, instagramkLink));
             } else {
                 gender = "Female";
                 name = getFemaleName();
                 email = getEmail(name);
-                System.out.println(String.format("INSERT INTO user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description, facebook_link, twitter_link, google_link, vkontakte_link, linkedIn_link, instagram_link) VALUES (\"%s\", '', \"%s\", 'ROLE_USER', \"%s\", \"%s\", %d, '', \"%s\", \"%s\", 'London is a capital of Great Britain!', \"%s\", \"%s\", \"%s\", \"%s\", \"%s\", \"%s\");", name, email, password, password, age, country, gender, facebookLink, twitterkLink, googlePlusLink, vkLink, linkedInLink, instagramkLink));
+                System.out.println(String.format("INSERT INTO app_user (first_name, last_name, email, role, password, confirmed_password, age, city, country, gender, description, facebook_link, twitter_link, google_link, vkontakte_link, linkedIn_link, instagram_link) VALUES ('%s', '', '%s', 'ROLE_USER', '%s', '%s', %d, '', '%s', '%s', 'London is a capital of Great Britain!', '%s', '%s', '%s', '%s', '%s', '%s');", name, email, password, password, age, country, gender, facebookLink, twitterkLink, googlePlusLink, vkLink, linkedInLink, instagramkLink));
             }
         }
         System.out.println("");
 
-        for (int i = 3, langId = 1; i < numOfUsers + 2; i++) {
+        for (int i = 3, langId = 1; i < numOfUsers + 1; i++) {
             List<String> userNativeLangs = getLanguages();
             for (int j = 0; j < userNativeLangs.size(); j++, langId++) {
-                String query = String.format("INSERT INTO native_language (id, name, user_id) VALUES (\"%d\", \"%s\", \"%d\");", langId, userNativeLangs.get(j), i);
+                String query = String.format("INSERT INTO native_language (id, name, user_id) VALUES ('%d', '%s', '%d');", langId, userNativeLangs.get(j), i);
                 System.out.println(query);
             }
         }
 
         System.out.println();
 
-        for (int i = 3, langId = 1; i < numOfUsers + 2; i++) {
+        for (int i = 3, langId = 1; i < numOfUsers + 1; i++) {
             List<String> userNativeLangs = getLanguages();
             for (int j = 0; j < userNativeLangs.size(); j++, langId++) {
-                String query = String.format("INSERT INTO practicing_language (id, name, user_id) VALUES (\"%d\", \"%s\", \"%d\");", langId, userNativeLangs.get(j), i);
+                String query = String.format("INSERT INTO practicing_language (id, name, user_id) VALUES ('%d', '%s', '%d');", langId, userNativeLangs.get(j), i);
                 System.out.println(query);
             }
         }

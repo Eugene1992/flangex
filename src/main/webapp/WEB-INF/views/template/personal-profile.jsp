@@ -8,20 +8,11 @@
     <head>
         <meta charset="utf-8">
         <title>Free Language Exchange</title>
-        <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-        <link rel="stylesheet" href="../../../resources/css/bootstrap.min.css">
-        <!-- Custom Fonts -->
-        <link href="../../../resources/css/style.css" rel="stylesheet">
-        <!-- Custom Fonts -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-        <%-- Glyphicons --%>
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
-        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/style.css">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/font-awesome.min.css">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/bootstrap-glyphicons.css">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/dataTables.bootstrap.min.css">
     </head>
     <body>
     <tiles:insertAttribute name="header" />
@@ -69,9 +60,24 @@
                                         <td>${user.role}</td>
                                         <td>${user.country}</td>
                                         <td><button type="button" style="width: 100%" class="btn btn-info btn-xs" data-toggle="modal" data-target="#userModal${user.id}">Update</button></td>
-                                        <td><a href="/remove/${user.id}" style="width: 100%" class="btn btn-danger btn-xs" role="button">Delete</a></td>
+                                        <td><button type="button" style="width: 100%" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#confirm-delete-user${user.id}">Delete</button></td>
                                         <td><a href="/user/${user.id}" style="width: 100%" class="btn btn-success btn-xs" role="button">View</a></td>
                                     </tr>
+                                    <div id="confirm-delete-user${user.id}" class="modal fade confirm-delete" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content modal-sm">
+                                                <div class="modal-body">
+                                                    <p>Do you really want to delete user ${user.firstname}?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href="/remove/${user.id}">
+                                                        <button style="width: 49%;" type="button" class="btn btn-sm btn-danger"><i class="fa fa-check" aria-hidden="true"></i> Yes</button>
+                                                    </a>
+                                                    <button style="width: 49%;" type="button" data-dismiss="modal" class="btn btn-sm btn-info"><i class="fa fa-times" aria-hidden="true"></i> No</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <!-- Modal -->
                                     <div class="modal fade" id="userModal${user.id}" role="dialog">
                                         <div class="modal-dialog modal-lg">
@@ -191,11 +197,11 @@
                         <div id="menu1" class="tab-pane fade in active">
                             <div class="row">
                                 <div class="col-md-3 col-md-offset-1">
-                                    <img src="https://pp.vk.me/c622031/v622031947/1ce05/87amyV4ec2k.jpg" alt="user-picture" class="img-responsive img-rounded">
+                                    <img src="${param.contextPath}/resources/img/user-${authUser.gender}.png" alt="user-picture" class="img-responsive img-rounded user-logo-img">
                                     <br>
                                     <div class="text-center">
                                         <button style="width: 49%;" class="btn btn-sm btn-success " data-toggle="modal" data-target="#authUserModal">Edit profile</button>
-                                        <button style="width: 49%;" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete">Delete profile</button>
+                                        <button style="width: 49%;" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete-user">Delete profile</button>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-md-offset-1">
@@ -275,19 +281,17 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <div id="confirm-delete" class="modal fade" role="dialog">
+                                            <div id="confirm-delete-user" class="modal fade confirm-delete" role="dialog">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content modal-sm">
                                                         <div class="modal-body">
                                                             <p>Are you sure?</p>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <div class="">
                                                             <a href="/profile-delete/${authUser.id}">
                                                                 <button style="width: 49%;" type="button" class="btn btn-sm btn-danger"><i class="fa fa-check" aria-hidden="true"></i> Yes</button>
                                                             </a>
                                                             <button style="width: 49%;" type="button" data-dismiss="modal" class="btn btn-sm btn-info"><i class="fa fa-times" aria-hidden="true"></i> No</button>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -455,6 +459,11 @@
                             <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
                         </div>
                     </div>
+
+                    <script type="text/javascript" src="${param.contextPath}/resources/js/jquery.min.js"></script>
+                    <script type="text/javascript" src="${param.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+                    <script type="text/javascript" src="${param.contextPath}/resources/js/dataTables.bootstrap.min.js"></script>
+                    <script type="text/javascript" src="${param.contextPath}/resources/js/bootstrap.min.js"></script>
                     <script>
                         $(document).ready(function() {
                             $('#users-table').DataTable( {

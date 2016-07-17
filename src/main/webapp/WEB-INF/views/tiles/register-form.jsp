@@ -55,7 +55,7 @@
                         <%-- Gender --%>
                         <div class="form-group col-xs-3 floating-label-form-group controls">
                             <form:select class="form-control"  path="gender" >
-                                <option selected><spring:message code="message.register.form.gender" /></option>
+                                <option disabled selected><spring:message code="message.register.form.gender" /></option>
                                 <form:option value="Male" />
                                 <form:option value="Female" />
                             </form:select>

@@ -4,14 +4,10 @@
     <head>
         <meta charset="utf-8">
         <title>Free Language Exchange</title>
-        <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-        <link rel="stylesheet" href="../../../resources/css/bootstrap.min.css">
-        <!-- Custom Fonts -->
-        <link href="../../../resources/css/style.css" rel="stylesheet">
-        <!-- Custom Fonts -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-        <%-- Glyphicons --%>
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/style.css">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/font-awesome.min.css">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/bootstrap-glyphicons.css">
     </head>
     <body>
     <tiles:insertAttribute name="header" />
@@ -28,5 +24,8 @@
         </div>
     </div>
     <tiles:insertAttribute name="footer" />
+
+    <script type="text/javascript" src="${param.contextPath}/resources/js/jquery.min.js"></script>
+    <script type="text/javascript" src="${param.contextPath}/resources/js/bootstrap.min.js"></script>
     </body>
 </html>

@@ -5,21 +5,11 @@
 <html>
     <head>
         <title>Free Language Exchange</title>
-        <title>Free Language Exchange</title>
-        <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-        <link rel="stylesheet" href="../../../resources/css/bootstrap.min.css">
-        <!-- Custom Fonts -->
-        <link href="../../../resources/css/style.css" rel="stylesheet">
-        <!-- Custom Fonts -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-        <%-- Glyphicons --%>
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
-        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/style.css">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/font-awesome.min.css">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/bootstrap-glyphicons.css">
+        <link rel="stylesheet" href="${param.contextPath}/resources/css/dataTables.bootstrap.min.css">
     </head>
     <body>
         <tiles:insertAttribute name="header" />
@@ -134,8 +124,8 @@
                                 <c:if test="${nested.index == 0}">
                                 <tr>
                                     <td width="120px" class="text-center">
-                                        <img height="150px" style="float: left; margin: 0 0 10px 0;" alt="User Pic" src="http://edu.cbsystematics.com/Images/Trainers/All/%D0%94%D0%B0%D0%B9%D0%BD%D0%B5%D0%BA%D0%B0.jpg" class="img-rounded img-responsive">
-                                        <a href="#" class="btn btn-success btn-sm" style="text-align: center">Add friend</a>
+                                        <img height="150px" style="float: left; margin: 0 0 0 5px;" alt="User Pic" src="${param.contextPath}/resources/img/user-${user.gender}.png" class="img-rounded img-responsive">
+                                        <%--<a href="#" class="btn btn-success btn-sm" style="text-align: center">Add friend</a>--%>
                                     </td>
                                     <td>
                                         <div>
@@ -219,11 +209,13 @@
                 </div>
             </div>
         </div>
-        <%--<tiles:insertAttribute name="footer" />--%>
+        <tiles:insertAttribute name="footer" />
 
-        <!-- JQuery -->
-        <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>--%>
-        <!-- Bootstrap Core JavaScript -->
+        <script type="text/javascript" src="${param.contextPath}/resources/js/jquery.min.js"></script>
+        <script type="text/javascript" src="${param.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="${param.contextPath}/resources/js/dataTables.bootstrap.min.js"></script>
+        <script type="text/javascript" src="${param.contextPath}/resources/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
         <script>
             $(document).ready(function() {
                 $('#users-table').DataTable( {
@@ -232,6 +224,22 @@
                     "ordering": false
                 } );
             } );
+
+            $(document).ready(function() {
+                var lang = window.location.href.split('?lang=')[1];
+                if (lang === undefined && $.cookie('lang') === null){
+                    $.cookie("lang", "ENG");
+                } else {
+                    if (lang === 'ru') {
+                        $.cookie("lang", "RUS");
+                        $("#lang").text(lang = $.cookie("lang"));
+                    } else {
+                        $.cookie("lang", "ENG");
+                        $("#lang").text(lang = $.cookie("lang"));
+                    }
+                }
+                /*$("#lang").text(lang === 'ru' ? "RUS" : "ENG");*/
+            });
         </script>
     </body>
 </html>

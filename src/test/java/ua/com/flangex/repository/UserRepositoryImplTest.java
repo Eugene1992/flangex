@@ -50,7 +50,8 @@ public class UserRepositoryImplTest {
                         new PracticingLanguage(Language.SPANISH.name())
                 ),
                 "London is a capital of Great Britain!",
-                Role.ROLE_ADMIN);
+                Role.ROLE_ADMIN
+        );
         userRepository.save(user);
     }
 
