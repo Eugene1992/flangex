@@ -4,7 +4,7 @@ import java.util.*;
 
 public class RandomUsersQueryGenerator {
     public static void main(String[] args) {
-        generateUserSQLquery(10);
+        generateUserSQLquery(50);
     }
 
     static void generateUserSQLquery(int numOfUsers){
@@ -39,7 +39,7 @@ public class RandomUsersQueryGenerator {
         for (int i = 3, langId = 1; i < numOfUsers + 3; i++) {
             List<String> userNativeLangs = getLanguages();
             for (int j = 0; j < userNativeLangs.size(); j++, langId++) {
-                String query = String.format("INSERT INTO native_language (id, name, user_id) VALUES (%d, '%s', %d);", langId, userNativeLangs.get(j), i);
+                String query = String.format("INSERT INTO native_language (name, user_id) VALUES ('%s', %d);", userNativeLangs.get(j), i);
                 System.out.println(query);
             }
         }
@@ -49,7 +49,7 @@ public class RandomUsersQueryGenerator {
         for (int i = 3, langId = 1; i < numOfUsers + 3; i++) {
             List<String> userNativeLangs = getLanguages();
             for (int j = 0; j < userNativeLangs.size(); j++, langId++) {
-                String query = String.format("INSERT INTO practicing_language (id, name, user_id) VALUES (%d, '%s', %d);", langId, userNativeLangs.get(j), i);
+                String query = String.format("INSERT INTO practicing_language (name, user_id) VALUES ('%s', %d);", userNativeLangs.get(j), i);
                 System.out.println(query);
             }
         }
