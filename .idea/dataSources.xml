@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1313316678">
-    <data-source source="LOCAL" name="PostgreSQL - heroku" uuid="0794338a-0cdb-4706-9bf3-7b123a283819">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://ec2-54-247-121-238.eu-west-1.compute.amazonaws.com:5432/de78i1pl7c75h5</jdbc-url>
-      <default-dialect>PostgreSQL</default-dialect>
-      <driver-properties>
-        <property name="ssl" value="true" />
-        <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
-      </driver-properties>
-    </data-source>
+  <component name="DataSourceManagerImpl" format="xml" hash="1951799282">
     <data-source source="LOCAL" name="HSQLDB (Local) - temp" uuid="4484ea1c-0eeb-4b6a-a470-97c329c3ed62">
       <driver-ref>hsqldb.local</driver-ref>
       <synchronize>true</synchronize>
@@ -48,6 +37,16 @@
         <property name="characterEncoding" value="utf8" />
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - de78i1pl7c75h5@ec2-54-247-121-238.eu-west-1.compute.amazonaws.com" uuid="28252ca1-8c06-4599-81c8-be095adb2fad">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-54-247-121-238.eu-west-1.compute.amazonaws.com:5432/de78i1pl7c75h5</jdbc-url>
+      <driver-properties>
+        <property name="ssl" value="true" />
+        <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
       </driver-properties>
     </data-source>
   </component>
