@@ -15,16 +15,28 @@ import ua.com.flangex.service.UserService;
 
 import java.util.List;
 
+/**
+ * Admin page controller.
+ *
+ * @author Evgeniy Deyneka
+ * @version 1.0
+ * @see UserService
+ * @see Logger
+ */
 @Controller
 public class AdminController {
+
     final static Logger logger = Logger.getLogger(AdminController.class);
 
     @Autowired
     private UserService userService;
 
-
-
-    @RequestMapping("/remove/{id}")
+    /**
+     * Remove user by id path variable.
+     * @param id - user identifier
+     * @return redirect to Apache Tiles 'profile' definition
+     */
+    @RequestMapping(value ="/remove/{id}", method = RequestMethod.GET)
     public String removeUser(@PathVariable("id") int id){
         logger.info("remove user " + id);
         userService.delete(id);
@@ -32,19 +44,15 @@ public class AdminController {
     }
 
     /**
-     *
-     * @param id
-     * @param user
-     * @param result
-     * @return
+     * Update user by id path variable.
+     * @param id - user identifier
+     * @param user - updated {@link User} instance
+     * @param result - validation support instance
+     * @return redirect to Apache Tiles 'profile' definition
      */
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String updateUser(@PathVariable("id") int id, @ModelAttribute("user") User user, BindingResult result){
         logger.info("update user " + id);
-        List<NativeLanguage> nl = user.getNativeLanguages().subList(1, user.getNativeLanguages().size());
-        user.setNativeLanguages(nl);
-        List<PracticingLanguage> pl = user.getPracticingLanguages().subList(1, user.getPracticingLanguages().size());
-        user.setPracticingLanguages(pl);
         userService.update(user);
         return "redirect:/profile";
     }

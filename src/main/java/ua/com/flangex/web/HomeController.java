@@ -10,6 +10,13 @@ import ua.com.flangex.model.Language;
 import ua.com.flangex.model.User;
 import java.security.Principal;
 
+/**
+ * Hone project page controller.
+ *
+ * @author Evgeniy Deyneka
+ * @version 1.0
+ * @see Logger
+ */
 @Controller
 public class HomeController {
 
@@ -20,6 +27,16 @@ public class HomeController {
         return new User();
     }
 
+    /**
+     * Return Apache Tiles 'home' definition by '/' GET request.
+     * Check the error request param, it will be not null when user get
+     * bad login attempt.
+     * Set list of {@link Country} and {@link Language} values into a model
+     * for form select options.
+     * @param error - bad user login attempt flag
+     * @param modelMap - model with country and language lists
+     * @return Apache Tiles 'home' definition
+     */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(@RequestParam(value = "error", required = false) String error, ModelMap modelMap) {
         logger.info("GET home page");

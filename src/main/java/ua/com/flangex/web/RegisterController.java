@@ -17,16 +17,20 @@ import ua.com.flangex.model.validator.UserValidator;
 import ua.com.flangex.service.UserService;
 import javax.validation.Valid;
 
+/**
+ * Register controller for home page register form and separate register form
+ * ('/register').
+ */
 @Controller
 public class RegisterController {
+
+    final static Logger logger = Logger.getLogger(RegisterController.class);
 
     @Autowired
     private UserValidator validator;
 
     @Autowired
     private UserService userService;
-
-    final static Logger logger = Logger.getLogger(RegisterController.class);
 
     @ModelAttribute("user")
     public User construct(){

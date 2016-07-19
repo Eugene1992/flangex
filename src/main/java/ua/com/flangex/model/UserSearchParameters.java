@@ -1,5 +1,15 @@
 package ua.com.flangex.model;
 
+/**
+ * Intermediate class for user search parameters transmitting from
+ * {@link ua.com.flangex.web.SearchController} to {@link ua.com.flangex.service.UserServiceImpl}.
+ *
+ * @author Evgeniy Deyneka
+ * @version 1.0
+ * @see User
+ * @see ua.com.flangex.web.SearchController
+ * @see ua.com.flangex.service.UserServiceImpl
+ */
 public class UserSearchParameters {
 
     private String firstName;

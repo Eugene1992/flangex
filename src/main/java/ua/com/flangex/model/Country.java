@@ -4,6 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Defines the names of the countries are available to the {@link User}
+ *
+ * @author Evgeniy Deyneka
+ * @version 1.0
+ * @see User
+ * @see Enum
+ */
 public enum Country {
     AALAND_ISLANDS("Aaland Islands"),
     AFGHANISTAN("Afghanistan"),
@@ -244,6 +252,9 @@ public enum Country {
     ZAMBIA("Zambia"),
     ZIMBABWE("Zimbabwe");
 
+    /**
+     * Property - name of the country. Created for countries whose names consist of several words.
+     */
     private String countryName;
 
     Country(String countryName) {
@@ -254,6 +265,12 @@ public enum Country {
         return countryName;
     }
 
+    /**
+     * Returns the list of available countries in {@link Country} using Java 8 Stream API
+     * @return List - list of available countries
+     * @see List
+     * @see Stream
+     */
     public static List<String> getCountries(){
         return Stream
                 .of(Country.values())

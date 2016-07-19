@@ -9,6 +9,19 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
+/**
+ * Represents a user as a core entity of a project. Required field covered by
+ * {@link org.springframework.validation.Validator} annotations and some validation
+ * logic moved into {@link ua.com.flangex.model.validator.UserValidator}.
+ * <b>Email, password and role</b> acts as user credentials. <b>First name, last name,
+ * age, gender, description</b> represents user contact details, <b>country, city</b>
+ * - user location, <b>practicing and native languages</b> - main filter parameters,
+ * <b>facebook, twitter, linkedin, vkontakte, google plus, instagram</b> links - user
+ * socials.
+ *
+ * @author Evgeniy Deyneka
+ * @version 1.0
+ */
 @Entity
 @Table(name = "app_user", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 public class User extends BaseEntity {
@@ -30,7 +43,6 @@ public class User extends BaseEntity {
     @Email(message = "validation.wrong-formed.email")
     private String email;
 
-    //@Size(min = 6, max = 20, message = "{validation.length.password}")
     @NotEmpty(message = "{validation.required.password}")
     private String password;
 
@@ -262,8 +274,8 @@ public class User extends BaseEntity {
         return practicingLanguages;
     }
 
-    public void setPracticingLanguages(List<PracticingLanguage> practicingPracticingLanguages) {
-        this.practicingLanguages = practicingPracticingLanguages;
+    public void setPracticingLanguages(List<PracticingLanguage> practicingLanguages) {
+        this.practicingLanguages = practicingLanguages;
     }
 
     public String getDescription() {

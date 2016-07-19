@@ -5,11 +5,23 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ua.com.flangex.model.NativeLanguage;
+import ua.com.flangex.model.PracticingLanguage;
 import ua.com.flangex.model.User;
 import ua.com.flangex.model.UserSearchParameters;
 import ua.com.flangex.repository.UserRepository;
 import java.util.List;
 
+/**
+ * {@link UserService} implementation which provide business logic operations.
+ *
+ * @author Evgeniy Deyneka
+ * @version 1.0
+ * @see UserService
+ * @see UserRepository
+ * @see SessionFactory
+ * @see User
+ */
 @Service
 public class UserServiceImpl implements UserService{
 
@@ -19,36 +31,74 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private SessionFactory sessionFactory;
 
+    /**
+     * Delegating into {@link UserRepository#save(User)}
+     * @param user - saved {@link User} instance
+     */
     @Override
     public void save(User user) {
         userRepository.save(user);
     }
 
+    /**
+     * Fix duplicate language instances store into database. Previous duplicates
+     * located in first index of language list which we are cut and save new values.
+     * Delegating into {@link UserRepository#update(User)
+     * @param user - saved {@link User} instance
+     */
     @Override
     public void update(User user) {
+        List<NativeLanguage> nl = user.getNativeLanguages().subList(1, user.getNativeLanguages().size());
+        user.setNativeLanguages(nl);
+        List<PracticingLanguage> pl = user.getPracticingLanguages().subList(1, user.getPracticingLanguages().size());
+        user.setPracticingLanguages(pl);
         userRepository.update(user);
     }
 
+    /**
+     * Delegating into {@link UserRepository#delete(int)}
+     */
     @Override
     public void delete(int id) {
         userRepository.delete(id);
     }
 
+    /**
+     * Delegating into {@link UserRepository#get(int)}
+     */
     @Override
     public User get(int id) {
         return userRepository.get(id);
     }
 
+    /**
+     * Delegating into {@link UserRepository#getByEmail(String)}
+     */
     @Override
     public User getByEmail(String email) {
         return userRepository.getByEmail(email);
     }
 
+    /**
+     * Delegating into {@link UserRepository#getAll()}}
+     */
     @Override
     public List<User> getAll() {
         return userRepository.getAll();
     }
 
+    /**
+     * Create {@link Query} for {@link UserRepository#getAllByQuery(Query)}
+     * by String concat using {@link StringBuilder}. Firstly append inner joins for
+     * native and practicing languages cause they are required. Then check
+     * {@link UserSearchParameters} properties for empty or value which means
+     * same (like 'Both' in gender). If property is not empty - concat it to query string.
+     * When query string is ready - create {@link Query} instance on the basis of it.
+     * Then we check formed query string for params again and if it consist current param -
+     * set the appropriate value to {@link Query} instance.
+     * @param usp - consist search parameters values(including empty) from search form
+     * @return
+     */
     @Override
     @Transactional
     public List<User> createSearchQuery(UserSearchParameters usp) {

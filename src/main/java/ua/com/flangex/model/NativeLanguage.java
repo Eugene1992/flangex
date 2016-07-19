@@ -2,9 +2,19 @@ package ua.com.flangex.model;
 
 import javax.persistence.*;
 
+/**
+ * Represents {@link User} native language. According to the project users
+ * can have multiple native languages. {@link NativeLanguage} also acts as a
+ * mandatory property during registration and search for other users.
+ *
+ * @author Evgeniy Deyneka
+ * @version 1.0
+ * @see User
+ * @see BaseEntity
+ */
 @Entity
 @Table(name = "native_language")
-public class NativeLanguage extends BaseEntity{
+public class NativeLanguage extends BaseEntity {
 
     private String name;
 
@@ -23,7 +33,6 @@ public class NativeLanguage extends BaseEntity{
         NativeLanguage that = (NativeLanguage) o;
 
         return name != null ? name.equals(that.name) : that.name == null;
-
     }
 
     @Override
@@ -35,13 +44,4 @@ public class NativeLanguage extends BaseEntity{
     public String toString() {
         return name;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
 }

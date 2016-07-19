@@ -2,6 +2,17 @@ package ua.com.flangex.model;
 
 import javax.persistence.*;
 
+/**
+ * Represents {@link User} practicing language. According to the project
+ * users can have multiple practicing languages. {@link PracticingLanguage}
+ * also acts as a mandatory property during registration and search for
+ * other users.
+ *
+ * @author Evgeniy Deyneka
+ * @version 1.0
+ * @see User
+ * @see BaseEntity
+ */
 @Entity
 @Table(name = "practicing_language")
 public class PracticingLanguage extends BaseEntity{
@@ -23,20 +34,11 @@ public class PracticingLanguage extends BaseEntity{
         PracticingLanguage that = (PracticingLanguage) o;
 
         return name != null ? name.equals(that.name) : that.name == null;
-
     }
 
     @Override
     public int hashCode() {
         return name != null ? name.hashCode() : 0;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override

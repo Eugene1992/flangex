@@ -4,6 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Defines the names of the languages are available to the {@link User}
+ *
+ * @author Evgeniy Deyneka
+ * @version 1.0
+ * @see User
+ * @see Enum
+ */
 public enum Language {
     AFRIKANS("Afrikans"),
     AINU("Ainu"),
@@ -102,6 +110,9 @@ public enum Language {
     YIDDISH("Yiddish"),
     ZULU("Zulu");
 
+    /**
+     * Property - name of the language. Created for languages whose names consist of several words.
+     */
     private String langName;
 
     Language(String langName) {
@@ -112,6 +123,12 @@ public enum Language {
         return langName;
     }
 
+    /**
+     * Returns the list of available languages in {@link Language} using Java 8 Stream API
+     * @return List - list of available languages
+     * @see List
+     * @see Stream
+     */
     public static List<String> getLanguages(){
         return Stream
                 .of(Language.values())
