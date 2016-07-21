@@ -69,7 +69,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User get(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        User user = (User) session.load(User.class, id);
+        User user = (User) session.get(User.class, id);
         return user;
     }
 

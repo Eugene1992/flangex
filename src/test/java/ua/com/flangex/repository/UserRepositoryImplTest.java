@@ -1,6 +1,7 @@
 package ua.com.flangex.repository;
 
-import org.hibernate.LazyInitializationException;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import ua.com.flangex.model.*;
 import java.util.Arrays;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -22,6 +24,9 @@ import java.util.Arrays;
 public class UserRepositoryImplTest {
 
     @Autowired
+    private SessionFactory sessionFactory;
+
+    @Autowired
     private UserRepository userRepository;
 
     private User user;
@@ -29,7 +34,7 @@ public class UserRepositoryImplTest {
     private String email;
 
     @Before
-    public void runOnce() {
+    public void setUp() {
         email = "deyneko" + (int)(Math.random()*10000) + "@gmail.com";
         user = new User(
                 "Eugene",
@@ -68,9 +73,15 @@ public class UserRepositoryImplTest {
     }
 
     @Test
-    public void getNotExistingUserTest(){
-        User result = userRepository.get(10);
+    public void getAllTest(){
+        List<User> result = userRepository.getAll();
         Assert.assertNotNull(result);
+    }
+
+    @Test
+    public void getNotExistingUserTest(){
+        User result = userRepository.get(Integer.MAX_VALUE);
+        Assert.assertNull(result);
     }
 
     @Test
@@ -99,6 +110,16 @@ public class UserRepositoryImplTest {
     public void deleteTest(){
         userRepository.delete(user.getId());
         User result = userRepository.get(user.getId());
-        Assert.assertNotNull(result);
+        Assert.assertNull(result);
+    }
+
+    @Test
+    @Transactional
+    public void getAllByQueryTest(){
+        String queryString = "FROM User u WHERE u.id = :id";
+        Query query = sessionFactory.getCurrentSession().createQuery(queryString);
+        query.setParameter("id", user.getId());
+        List<User> result = userRepository.getAllByQuery(query);
+        Assert.assertEquals(user, result.get(0));
     }
 }

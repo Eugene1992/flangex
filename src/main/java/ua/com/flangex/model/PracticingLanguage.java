@@ -26,6 +26,10 @@ public class PracticingLanguage extends BaseEntity{
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -165,6 +165,10 @@ public class UserServiceImpl implements UserService{
             queryString = queryString.substring(0, queryString.length() - 5);
         }
 
+        if (queryString.endsWith("WHERE ")){
+            queryString = queryString.substring(0, queryString.length() - 7);
+        }
+
         Query query = sessionFactory.getCurrentSession().createQuery(queryString);
 
         query.setParameter("nativeLang", usp.getNativeLanguage());

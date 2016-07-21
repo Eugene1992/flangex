@@ -14,6 +14,8 @@ import ua.com.flangex.model.Country;
 import ua.com.flangex.model.Language;
 import ua.com.flangex.model.User;
 import ua.com.flangex.service.UserService;
+
+import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
@@ -65,7 +67,7 @@ public class ProfileController {
      * @return
      */
     @RequestMapping("/profile")
-    public String userProfile(ModelMap modelMap, Principal principal){
+    public String getUserProfile(ModelMap modelMap, Principal principal){
         logger.info("GET personal profile");
         modelMap.addAttribute("usersList", userService.getAll());
         modelMap.addAttribute("authUser", userService.getByEmail(principal.getName()));
