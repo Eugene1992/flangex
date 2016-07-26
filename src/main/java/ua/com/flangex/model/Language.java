@@ -39,6 +39,7 @@ public enum Language {
     FAROESE("Faroese"),
     FINNISH("Finnish"),
     FLEMISH("Flemish"),
+    FRENCH("French"),
     GAELIC("Gaelic"),
     GEORGIAN("Georgian"),
     GERMAN("German"),

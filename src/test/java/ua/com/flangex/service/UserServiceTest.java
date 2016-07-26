@@ -10,7 +10,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ua.com.flangex.model.*;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -54,6 +53,12 @@ public class UserServiceTest {
                         new PracticingLanguage(Language.SPANISH.getLangName())
                 ),
                 "London is a capital of Great Britain!",
+                "https://www.facebook.com/",
+                "https://www.twitter.com/",
+                "https://vk.com/",
+                "",
+                "",
+                "",
                 Role.ROLE_ADMIN
         );
         userService.save(user);
@@ -106,18 +111,150 @@ public class UserServiceTest {
         Assert.assertNotNull(result);
     }
 
-    /*@Test
-    public void createSearchQueryByLanguagesTest(){
+    @Test
+    public void createSearchQueryByPracticingLanguageTest(){
+        PracticingLanguage userPractLang = user.getPracticingLanguages().get(0);
         UserSearchParameters usp = new UserSearchParameters(
                 "", "", "", "", "", "", "",
-                user.getNativeLanguages().get(0).getName(),
-                user.getPracticingLanguages().get(0).getName(),
+                userPractLang.getName(),
                 null, null, null, null, null, null
         );
         List<User> users = userService.createSearchQuery(usp);
-        System.out.println();
-        boolean result = users.stream().anyMatch(u -> u.equals(user));
+        boolean result = users
+                .stream()
+                .allMatch(u -> u.getPracticingLanguages().contains(userPractLang));
         Assert.assertTrue(result);
-    }*/
+    }
 
+    @Test
+    public void createSearchQueryByAllParamsTest(){
+        PracticingLanguage userPractLang = user.getPracticingLanguages().get(0);
+        UserSearchParameters usp = new UserSearchParameters(
+                user.getFirstname(),
+                user.getLastname(),
+                user.getCountry(),
+                user.getCity(),
+                String.valueOf(user.getAge() - 1),
+                String.valueOf(user.getAge() + 1),
+                user.getGender(),
+                userPractLang.getName(),
+                user.getFacebookLink(),
+                user.getTwitterLink(),
+                user.getInstagramLink(),
+                user.getLinkedInLink(),
+                user.getGooglePlusLink(),
+                user.getVkontakteLink()
+        );
+        List<User> users = userService.createSearchQuery(usp);
+        boolean result = users
+                .stream()
+                .allMatch(u -> u.getFirstname().equals(user.getFirstname())
+                        && u.getLastname().equals(user.getLastname())
+                        && u.getCountry().equals(user.getCountry())
+                        && u.getCity().equals(user.getCity())
+                        && u.getAge().equals(user.getAge())
+                        && u.getGender().equals(user.getGender())
+                        && u.getPracticingLanguages().contains(userPractLang)
+                        && u.getFacebookLink().equals(user.getFacebookLink())
+                        && u.getTwitterLink().equals(user.getTwitterLink())
+                        && u.getInstagramLink().equals(user.getInstagramLink())
+                        && u.getLinkedInLink().equals(user.getGooglePlusLink())
+                        && u.getGooglePlusLink().equals(user.getGooglePlusLink())
+                        && u.getVkontakteLink().equals(user.getVkontakteLink())
+                );
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void createSearchQueryByFirstNameTest(){
+        PracticingLanguage userPractLang = user.getPracticingLanguages().get(0);
+        String userFirstName = user.getFirstname();
+        UserSearchParameters usp = new UserSearchParameters(
+                user.getFirstname(),
+                "", "", "", "", "", "",
+                userPractLang.getName(),
+                null, null, null, null, null, null
+        );
+        List<User> users = userService.createSearchQuery(usp);
+        boolean result = users
+                .stream()
+                .allMatch(u -> u.getPracticingLanguages().contains(userPractLang)
+                        && u.getFirstname().contains(userFirstName));
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void createSearchQueryByMaleGenderTest(){
+        PracticingLanguage userPractLang = user.getPracticingLanguages().get(0);
+        UserSearchParameters usp = new UserSearchParameters(
+                "", "", "", "", "", "",
+                user.getGender(),
+                userPractLang.getName(),
+                null, null, null, null, null, null
+        );
+        List<User> users = userService.createSearchQuery(usp);
+        boolean result = users
+                .stream()
+                .allMatch(u -> u.getPracticingLanguages().contains(userPractLang)
+                        && u.getGender().contains(user.getGender()));
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void createSearchQueryByFemaleGenderTest(){
+        String newGender = "Female";
+        user.setGender(newGender);
+        userService.update(user);
+        PracticingLanguage userPractLang = user.getPracticingLanguages().get(0);
+        UserSearchParameters usp = new UserSearchParameters(
+                "", "", "", "", "", "",
+                newGender,
+                userPractLang.getName(),
+                null, null, null, null, null, null
+        );
+        List<User> users = userService.createSearchQuery(usp);
+        boolean result = users
+                .stream()
+                .allMatch(u -> u.getPracticingLanguages().contains(userPractLang)
+                        && u.getGender().contains(user.getGender()));
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void createSearchQueryByBothGenderTest(){
+        PracticingLanguage userPractLang = user.getPracticingLanguages().get(0);
+        UserSearchParameters usp = new UserSearchParameters(
+                "", "", "", "", "", "",
+                "Both",
+                userPractLang.getName(),
+                null, null, null, null, null, null
+        );
+        List<User> users = userService.createSearchQuery(usp);
+        boolean result = users
+                .stream()
+                .allMatch(u -> u.getPracticingLanguages().contains(userPractLang)
+                        && u.getGender().contains(user.getGender()));
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void createSearchQueryBySocialsTest(){
+        PracticingLanguage userPractLang = user.getPracticingLanguages().get(0);
+        UserSearchParameters usp = new UserSearchParameters(
+                "", "", "", "", "", "", "",
+                userPractLang.getName(),
+                user.getFacebookLink(),
+                user.getTwitterLink(),
+                user.getInstagramLink(),
+                null, null, null
+        );
+        List<User> users = userService.createSearchQuery(usp);
+        boolean result = users
+                .stream()
+                .allMatch(u -> u.getPracticingLanguages().contains(userPractLang)
+                        && u.getFacebookLink().equals(user.getFacebookLink())
+                        && u.getTwitterLink().equals(user.getTwitterLink())
+                        && u.getInstagramLink().equals(user.getInstagramLink()));
+        Assert.assertTrue(result);
+    }
 }

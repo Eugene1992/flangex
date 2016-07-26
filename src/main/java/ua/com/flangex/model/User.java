@@ -110,6 +110,28 @@ public class User extends BaseEntity {
         this.role = role;
     }
 
+    public User(String firstname, String lastname, Integer age, String email, String password, String confirmedPassword, String gender, String country, String city, List<NativeLanguage> nativeLanguages, List<PracticingLanguage> practicingLanguages, String description, String facebookLink, String twitterLink, String googlePlusLink, String vkontakteLink, String linkedInLink, String instagramLink, Role role) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.email = email;
+        this.password = password;
+        this.confirmedPassword = confirmedPassword;
+        this.gender = gender;
+        this.country = country;
+        this.city = city;
+        this.nativeLanguages = nativeLanguages;
+        this.practicingLanguages = practicingLanguages;
+        this.description = description;
+        this.facebookLink = facebookLink;
+        this.twitterLink = twitterLink;
+        this.googlePlusLink = googlePlusLink;
+        this.vkontakteLink = vkontakteLink;
+        this.linkedInLink = linkedInLink;
+        this.instagramLink = instagramLink;
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

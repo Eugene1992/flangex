@@ -7,8 +7,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class AboutControllerTest extends AbstractWebTestController{
 
+    /**
+     * Return about the project page by '/about' GET request.
+     * @throws Exception
+     */
     @Test
-    public void testUserList() throws Exception {
+    public void aboutTest() throws Exception {
         mockMvc.perform(get("/about"))
                 .andDo(print())
                 .andExpect(status().isOk())

@@ -48,17 +48,4 @@ public class HomeController {
         modelMap.addAttribute("languageList", Language.getLanguages());
         return "home";
     }
-
-    @RequestMapping(value = "/access-denied", method = RequestMethod.GET)
-    public ModelAndView aceessDenied(Principal user){
-        ModelAndView model = new ModelAndView();
-        logger.error("GET access denied");
-        if (user != null) {
-            model.addObject("errorMessage", user.getName() + "You have no access to this page");
-        } else {
-            model.addObject("errorMessage", "You have no access to this page");
-        }
-        model.setViewName("access-denied");
-        return model;
-    }
 }

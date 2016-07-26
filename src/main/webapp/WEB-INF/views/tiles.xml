@@ -38,11 +38,6 @@
         <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
     </definition>
 
-    <definition name="access-denied" template="/WEB-INF/views/template/access-denied.jsp">
-        <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
-    </definition>
-
     <definition name="about" template="/WEB-INF/views/template/about.jsp">
         <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
         <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />

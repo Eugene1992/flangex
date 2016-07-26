@@ -44,21 +44,21 @@
                         <div class="form-group col-lg-12 controls">
                             <label for="gender">Gender</label>
                             <select name="gender" class="form-control input-sm" id="gender">
+                                <option>Both</option>
                                 <option>Male</option>
                                 <option>Female</option>
-                                <option>Both</option>
                             </select>
                         </div>
-                        <div class="form-group col-lg-6 controls">
+                        <%--<div class="form-group col-lg-6 controls">
                             <label for="native-language">Native language</label>
                             <select name="native-language" class="form-control input-sm" id="native-language">
                                 <c:forEach items="${languageList}" var="lang">
                                     <option value="${lang}">${lang}</option>
                                 </c:forEach>
                             </select>
-                        </div>
-                        <div class="form-group col-lg-6 controls">
-                            <label for="practicing-language">Practicing language</label>
+                        </div>--%>
+                        <div class="form-group col-lg-12 controls">
+                            <label for="practicing-language">Which language you wanna practice?</label>
                             <select name="practicing-language" class="form-control input-sm" id="practicing-language">
                                 <c:forEach items="${languageList}" var="lang">
                                     <option value="${lang}">${lang}</option>

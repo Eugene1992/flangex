@@ -48,7 +48,7 @@ public class ProfileController {
      * Set selected user to model.
      * @param id - user identifier
      * @param model - model with selected user
-     * @return Apache Tiles 'user-profile' definition
+     * @return 'user-profile' definition
      */
     @RequestMapping("/user/{id}")
     public String getUser(@PathVariable("id") int id, ModelMap model){
@@ -64,7 +64,7 @@ public class ProfileController {
      * authorized user, 'usersList' to populate admin panel if user get ADMIN_ROLE.
      * @param modelMap - model with lists of required data for user profile
      * @param principal - special Spring Security object wich consist user credentials
-     * @return
+     * @return 'personal-profile' definition
      */
     @RequestMapping("/profile")
     public String getUserProfile(ModelMap modelMap, Principal principal){

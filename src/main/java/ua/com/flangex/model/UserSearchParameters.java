@@ -19,7 +19,6 @@ public class UserSearchParameters {
     private String ageFrom;
     private String ageTo;
     private String gender;
-    private String nativeLanguage;
     private String practicingLanguage;
     private String facebookCheck;
     private String twitterCheck;
@@ -28,7 +27,7 @@ public class UserSearchParameters {
     private String googlePlusCheck;
     private String vkontakteCheck;
 
-    public UserSearchParameters(String firstName, String lastName, String country, String city, String ageFrom, String ageTo, String gender, String nativeLanguage, String practicingLanguage, String facebookCheck, String twitterCheck, String instagramCheck, String linkedinCheck, String googlePlusCheck, String vkontakteCheck) {
+    public UserSearchParameters(String firstName, String lastName, String country, String city, String ageFrom, String ageTo, String gender, String practicingLanguage, String facebookCheck, String twitterCheck, String instagramCheck, String linkedinCheck, String googlePlusCheck, String vkontakteCheck) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
@@ -36,7 +35,6 @@ public class UserSearchParameters {
         this.ageFrom = ageFrom;
         this.ageTo = ageTo;
         this.gender = gender;
-        this.nativeLanguage = nativeLanguage;
         this.practicingLanguage = practicingLanguage;
         this.facebookCheck = facebookCheck;
         this.twitterCheck = twitterCheck;
@@ -72,10 +70,6 @@ public class UserSearchParameters {
 
     public String getGender() {
         return gender;
-    }
-
-    public String getNativeLanguage() {
-        return nativeLanguage;
     }
 
     public String getPracticingLanguage() {
