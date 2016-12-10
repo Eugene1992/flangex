@@ -18,10 +18,9 @@
                 <div class="alert alert-success" id="cv-download" role="alert">
                     <p style="font-size: 16px">Find me in socials <br>or download my CV</p>
                     <hr>
-                    <img src="${param.contextPath}/resources/img/vk-logo.png" alt="">
-                    <img src="${param.contextPath}/resources/img/facebook-logo.png" alt="">
+                    <a href="https://vk.com/zheki4"><img src="${param.contextPath}/resources/img/vk-logo.png" alt=""></a>
+                    <a href="https://www.facebook.com/profile.php?id=100001797104519"><img src="${param.contextPath}/resources/img/facebook-logo.png" alt=""></a>
                     <a href="${param.contextPath}/resources/files/cv.pdf"><img src="${param.contextPath}/resources/img/pdf-48.png" alt="df"></a>
-                    <a href="${param.contextPath}/resources/files/cv.docx"><img src="${param.contextPath}/resources/img/doc-48.png" alt="df"></a>
                 </div>
             </div>
             <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-8 about-descr">

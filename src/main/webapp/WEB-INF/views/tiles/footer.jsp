@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="footer-col col-md-4">
                     <h3><spring:message code="message.footer.contacts"/></h3>
-                    <p>Ukraine, Kiev<br>Zdolbunovskaya str.</p>
+                    <p>Ukraine, Kiev</p>
                 </div>
                 <div class="footer-col col-md-4">
                     <h3><spring:message code="message.footer.socials"/></h3>
